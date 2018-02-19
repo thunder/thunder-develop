@@ -1,6 +1,6 @@
 {
-    "name": "burdamagazinorg/thunder-project",
-    "description": "Project template for Thunder projects with composer",
+    "name": "burdamagazinorg/thunder-development",
+    "description": "Project for thunder development.",
     "type": "project",
     "license": "GPL-2.0+",
     "authors": [
@@ -33,18 +33,18 @@
         {
             "type": "composer",
             "url": "https://asset-packagist.org"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/BurdaMagazinOrg/thunder-distribution"
         }
     ],
     "require": {
-        "burdamagazinorg/thunder": "~8.2",
-        "cweagans/composer-patches": "^1.6",
         "drupal-composer/drupal-scaffold": "^2.2",
-        "drupal/console": "^1.2",
-        "composer/installers": "^1.2",
         "drush/drush": "~8.0|^9.0.0-beta8",
-        "oomphinc/composer-installers-extender": "^1.1",
         "webflo/drupal-finder": "^1.0.0",
-        "webmozart/path-util": "^2.3"
+        "webmozart/path-util": "^2.3",
+        "wikimedia/composer-merge-plugin": "^1.4"
     },
     "require-dev": {
         "behat/mink": "1.7.x-dev",
@@ -68,10 +68,10 @@
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "pre-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+            "DrupalProject\\composer\\ScriptHandler::downLoadDistribution"
         ],
         "pre-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+            "DrupalProject\\composer\\ScriptHandler::downLoadDistribution"
         ],
         "post-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
@@ -93,6 +93,15 @@
             "docroot/themes/contrib/{$name}": ["type:drupal-theme"],
             "drush/contrib/{$name}": ["type:drupal-drush"]
         },
+        "merge-plugin": {
+            "include": [
+                "docroot/profiles/contrib/thunder/composer.json"
+            ],
+            "replace": true,
+            "merge-extra": false,
+            "merge-scripts": false
+        },
+        "thunder-package": "burdamagazinorg/thunder",
         "enable-patching": true
     },
     "config": {
