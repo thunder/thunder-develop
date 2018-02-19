@@ -1,5 +1,5 @@
 {
-    "name": "burdamagazinorg/thunder-development",
+    "name": "thunder/thunder-development",
     "description": "Project for thunder development.",
     "type": "project",
     "license": "GPL-2.0-or-later",
@@ -17,13 +17,12 @@
             "email": "mladen.todorovic@burda.com"
         },
         {
-            "name": "Timo Welde",
-            "email": "welde@galaniproject.de"
-        },
-        {
             "name": "Volker Killesreiter",
             "email": "killesreiter@burda.com"
-        }
+        },
+        {
+            "name": "Alex Pott",
+            "email": "alex.a.pott@gmail.com"
     ],
     "repositories": [
         {
