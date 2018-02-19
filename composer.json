@@ -2,7 +2,7 @@
     "name": "burdamagazinorg/thunder-development",
     "description": "Project for thunder development.",
     "type": "project",
-    "license": "GPL-2.0+",
+    "license": "GPL-2.0-or-later",
     "authors": [
         {
             "name": "Daniel Bosen",
@@ -40,6 +40,9 @@
         }
     ],
     "require": {
+        "composer/installers": "^1.2",
+        "cweagans/composer-patches": "^1.6",
+        "drupal/core": "~8.4",
         "drupal-composer/drupal-scaffold": "^2.2",
         "drush/drush": "~8.0|^9.0.0-beta8",
         "webflo/drupal-finder": "^1.0.0",
@@ -74,9 +77,11 @@
             "DrupalProject\\composer\\ScriptHandler::downLoadDistribution"
         ],
         "post-install-cmd": [
+            "@drupal-scaffold",
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ],
         "post-update-cmd": [
+            "@drupal-scaffold",
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ]
     },
@@ -97,9 +102,7 @@
             "include": [
                 "docroot/profiles/contrib/thunder/composer.json"
             ],
-            "replace": true,
-            "merge-extra": false,
-            "merge-scripts": false
+            "replace": true
         },
         "thunder-package": "burdamagazinorg/thunder",
         "enable-patching": true
