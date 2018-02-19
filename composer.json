@@ -40,6 +40,9 @@
         }
     ],
     "require": {
+        "composer/installers": "^1.2",
+        "cweagans/composer-patches": "^1.6",
+        "drupal/core": "~8.4",
         "drupal-composer/drupal-scaffold": "^2.2",
         "drush/drush": "~8.0|^9.0.0-beta8",
         "webflo/drupal-finder": "^1.0.0",
@@ -74,12 +77,12 @@
             "DrupalProject\\composer\\ScriptHandler::downLoadDistribution"
         ],
         "post-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-            "@drupal-scaffold"
+            "@drupal-scaffold",
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ],
         "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-            "@drupal-scaffold"
+            "@drupal-scaffold",
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ]
     },
     "extra": {
@@ -99,23 +102,10 @@
             "include": [
                 "docroot/profiles/contrib/thunder/composer.json"
             ],
-            "replace": true,
-            "merge-extra": false,
-            "merge-scripts": false
+            "replace": true
         },
         "thunder-package": "burdamagazinorg/thunder",
         "enable-patching": true
-    },
-    "replace": {
-        "heiseonline/shariff": "*",
-        "bower-asset/jquery": "*",
-        "bower-asset/jqueryui": "*",
-        "bower-asset/backbone": "*",
-        "bower-asset/underscore": "*",
-        "npm-asset/jquery": "*",
-        "npm-asset/jqueryui": "*",
-        "npm-asset/backbone": "*",
-        "npm-asset/underscore": "*"
     },
     "config": {
         "bin-dir": "bin/"
