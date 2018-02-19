@@ -74,9 +74,11 @@
             "DrupalProject\\composer\\ScriptHandler::downLoadDistribution"
         ],
         "post-install-cmd": [
+            "@drupal-scaffold",
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ],
         "post-update-cmd": [
+            "@drupal-scaffold",
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ]
     },
