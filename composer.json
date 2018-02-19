@@ -106,6 +106,17 @@
         "thunder-package": "burdamagazinorg/thunder",
         "enable-patching": true
     },
+    "replace": {
+        "heiseonline/shariff": "*",
+        "bower-asset/jquery": "*",
+        "bower-asset/jqueryui": "*",
+        "bower-asset/backbone": "*",
+        "bower-asset/underscore": "*",
+        "npm-asset/jquery": "*",
+        "npm-asset/jqueryui": "*",
+        "npm-asset/backbone": "*",
+        "npm-asset/underscore": "*"
+    },
     "config": {
         "bin-dir": "bin/"
     }
