@@ -106,8 +106,5 @@
         },
         "thunder-package": "burdamagazinorg/thunder",
         "enable-patching": true
-    },
-    "config": {
-        "bin-dir": "bin/"
     }
 }
