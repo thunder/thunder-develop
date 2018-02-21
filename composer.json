@@ -44,7 +44,7 @@
         "cweagans/composer-patches": "^1.6",
         "drupal/core": "~8.4",
         "drupal-composer/drupal-scaffold": "^2.2",
-        "drush/drush": "~8.0|^9.0.0-beta8",
+        "drush/drush": "~8.0",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
         "wikimedia/composer-merge-plugin": "^1.4"
@@ -103,7 +103,8 @@
             "include": [
                 "docroot/profiles/contrib/thunder/composer.json"
             ],
-            "replace": true
+            "replace": true,
+            "merge-extra": true
         },
         "thunder-package": "burdamagazinorg/thunder",
         "enable-patching": true

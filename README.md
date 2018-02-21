@@ -1,22 +1,24 @@
 # Thunder development installation
-To install the Thunder Distribution for development, clone this repository and do a composer install in the created 
-folder:
+To install the Thunder Distribution for development create the thunder-develop project:
 
-    git clone https://github.com/thunder/thunder-develop.git
+    composer create-project thunder/thunder-develop -s dev
     cd thunder-develop
-    composer install
     
 This will install thunder into the docroot folder. The actual 
 distribution repository will be cloned into docroot/profiles/contrib/thunder.
 
+If the docroot folder does not contain the index.php execute the drupal-scaffold composer command
+
+    composer drupal-scaffold
+    
+Now you can install thunder. Point the web server to the docroot directory and do a normal site install. 
+
 To work on the distribution, work inside the docroot/profiles/contrib/thunder
-folder. When commiting there, you commit to the distributions repository.
+folder. 
 
     cd docroot/profiles/contrib/thunder
-    git checkout -b feature/new-feature <-- this will be a branch in the distribution
+    git checkout -b feature/new-thunder-feature # <-- this will be a branch in the distribution not the project
     <make changes>
     git commit .
     
-If you need to update your local installation in the docroot folder, to a composer 
-install or update in the root folder.
 
