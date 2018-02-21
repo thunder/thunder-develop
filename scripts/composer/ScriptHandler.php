@@ -57,7 +57,7 @@ class ScriptHandler {
     }
   }
 
-  public static function downLoadDistribution(Event $event) {
+  public static function downloadDistribution(Event $event) {
     $composer = $event->getComposer();
     $extra = $composer->getPackage()->getExtra();
 
@@ -77,7 +77,7 @@ class ScriptHandler {
    * @param \Composer\Script\Event $event
    * @param string $thunderRoot
    */
-  public static function cloneDistribution(Event $event, $thunderRoot): void {
+  public static function cloneDistribution(Event $event, $thunderRoot) {
     $composer = $event->getComposer();
     $extra = $composer->getPackage()->getExtra();
     $package = $extra['thunder-package'];

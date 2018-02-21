@@ -72,10 +72,10 @@
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "pre-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::downLoadDistribution"
+            "DrupalProject\\composer\\ScriptHandler::downloadDistribution"
         ],
         "pre-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::downLoadDistribution"
+            "DrupalProject\\composer\\ScriptHandler::downloadDistribution"
         ],
         "post-install-cmd": [
             "@drupal-scaffold",
