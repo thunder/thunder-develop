@@ -3,13 +3,16 @@
  * @file
  * Contains \DrupalProject\composer\ScriptHandler.
  */
-namespace DrupalProject\composer;
+namespace ThunderDevelop\composer;
+
 use Composer\Script\Event;
+
 use DrupalFinder\DrupalFinder;
 use Symfony\Component\Filesystem\Filesystem;
 use Webmozart\PathUtil\Path;
 
 class ScriptHandler {
+
   public static function createRequiredFiles(Event $event) {
     $fs = new Filesystem();
     $drupalFinder = new DrupalFinder();
@@ -22,9 +25,9 @@ class ScriptHandler {
     ];
     // Required for unit testing
     foreach ($dirs as $dir) {
-      if (!$fs->exists($drupalRoot . '/'. $dir)) {
-        $fs->mkdir($drupalRoot . '/'. $dir);
-        $fs->touch($drupalRoot . '/'. $dir . '/.gitkeep');
+      if (!$fs->exists($drupalRoot . '/' . $dir)) {
+        $fs->mkdir($drupalRoot . '/' . $dir);
+        $fs->touch($drupalRoot . '/' . $dir . '/.gitkeep');
       }
     }
     // Prepare the settings file for installation
@@ -40,14 +43,16 @@ class ScriptHandler {
       ];
       drupal_rewrite_settings($settings, $drupalRoot . '/sites/default/settings.php');
       $fs->chmod($drupalRoot . '/sites/default/settings.php', 0666);
-      $event->getIO()->write("Create a sites/default/settings.php file with chmod 0666");
+      $event->getIO()
+        ->write("Create a sites/default/settings.php file with chmod 0666");
     }
     // Create the files directory with chmod 0777
     if (!$fs->exists($drupalRoot . '/sites/default/files')) {
       $oldmask = umask(0);
       $fs->mkdir($drupalRoot . '/sites/default/files', 0777);
       umask($oldmask);
-      $event->getIO()->write("Create a sites/default/files directory with chmod 0777");
+      $event->getIO()
+        ->write("Create a sites/default/files directory with chmod 0777");
     }
   }
 
@@ -60,12 +65,15 @@ class ScriptHandler {
     $packages = $extra['local-develop-packages'];
 
     foreach ($packages as $packageString => $packageVersion) {
-      $package = $composer->getRepositoryManager()->findPackage($packageString, $packageVersion);
-      if($package) {
-        $installPath = $installationManager->getInstaller($package->getType())->getInstallPath($package);
+      $package = $composer->getRepositoryManager()
+        ->findPackage($packageString, $packageVersion);
+      if ($package) {
+        $installPath = $installationManager->getInstaller($package->getType())
+          ->getInstallPath($package);
         if (!$fs->exists($installPath)) {
           $downloadManager->download($package, $installPath, TRUE);
         }
       }
     }
   }
+}

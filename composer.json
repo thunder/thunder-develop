@@ -65,19 +65,14 @@
     },
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-        "pre-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::downloadDistribution"
-        ],
         "pre-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::downloadDistribution"
+            "ThunderDevelop\\composer\\ScriptHandler::downloadDistribution"
         ],
         "post-install-cmd": [
-            "@drupal-scaffold",
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "ThunderDevelop\\composer\\ScriptHandler::createRequiredFiles"
         ],
         "post-update-cmd": [
-            "@drupal-scaffold",
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "ThunderDevelop\\composer\\ScriptHandler::createRequiredFiles"
         ]
     },
     "extra": {
