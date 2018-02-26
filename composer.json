@@ -36,6 +36,10 @@
         },
         {
             "type": "vcs",
+            "url": "https://github.com/BurdaMagazinOrg/theme-thunder-admin"
+        },
+        {
+            "type": "vcs",
             "url": "https://github.com/BurdaMagazinOrg/thunder-distribution"
         }
     ],
@@ -106,7 +110,10 @@
             "replace": true,
             "merge-extra": true
         },
-        "thunder-package": "burdamagazinorg/thunder",
+        "local-develop-packages": {
+            "burdamagazinorg/thunder": "dev-develop",
+            "drupal/thunder_admin": "dev-8.x-2.x"
+        },
         "enable-patching": true
     }
 }
