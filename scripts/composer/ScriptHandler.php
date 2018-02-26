@@ -4,14 +4,8 @@
  * Contains \DrupalProject\composer\ScriptHandler.
  */
 namespace DrupalProject\composer;
-use Composer\DependencyResolver\Operation\InstallOperation;
-use Composer\Package\Package;
-use Composer\Repository\VcsRepository;
 use Composer\Script\Event;
-use Composer\Repository\Vcs\GitHubDriver;
 use DrupalFinder\DrupalFinder;
-use function GuzzleHttp\Psr7\str;
-use Robo\Task\Archive\Pack;
 use Symfony\Component\Filesystem\Filesystem;
 use Webmozart\PathUtil\Path;
 
@@ -58,49 +52,20 @@ class ScriptHandler {
   }
 
   public static function downloadDistribution(Event $event) {
-    $composer = $event->getComposer();
-    $extra = $composer->getPackage()->getExtra();
-
-    $package = $extra['thunder-package'];
-    $packageName = explode('/', $package)[1];
-
-    foreach($extra['installer-paths'] as $installerPath => $types) {
-      if(in_array('type:drupal-profile', $types)) {
-        $thunderRoot = str_replace('{$name}', $packageName, $installerPath);
-        self::cloneDistribution($event, $thunderRoot);
-        break;
-      }
-    }
-  }
-
-  /**
-   * @param \Composer\Script\Event $event
-   * @param string $thunderRoot
-   */
-  public static function cloneDistribution(Event $event, $thunderRoot) {
-    $composer = $event->getComposer();
-    $extra = $composer->getPackage()->getExtra();
-    $package = $extra['thunder-package'];
-
-    $repositories = $composer->getRepositoryManager()->getRepositories();
     $fs = new Filesystem();
-    // Download distribution, if necessary.
-    if (!$fs->exists($thunderRoot)) {
-      foreach ($repositories as $repository) {
-        if ($repository instanceof VcsRepository) {
-          /** @var \Composer\Repository\Vcs\GitHubDriver $gitDriver */
-          $gitDriver = $repository->getDriver();
-          $composerInformation = $gitDriver->getComposerInformation('develop');
-          if ($composerInformation['name'] === $package) {
-            // TODO: use $composer top actually download the repository.
+    $composer = $event->getComposer();
+    $installationManager = $composer->getInstallationManager();
+    $downloadManager = $composer->getDownloadManager();
+    $extra = $composer->getPackage()->getExtra();
+    $packages = $extra['local-develop-packages'];
 
-            $repositoryUrl = $gitDriver->getUrl();
-            exec('git clone ' . $repositoryUrl . ' ' . $thunderRoot);
-            $event->getIO()->write("Downloaded Thunder");
-            break;
-          }
+    foreach ($packages as $packageString => $packageVersion) {
+      $package = $composer->getRepositoryManager()->findPackage($packageString, $packageVersion);
+      if($package) {
+        $installPath = $installationManager->getInstaller($package->getType())->getInstallPath($package);
+        if (!$fs->exists($installPath)) {
+          $downloadManager->download($package, $installPath, TRUE);
         }
       }
     }
   }
-}
