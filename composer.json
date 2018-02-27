@@ -56,6 +56,9 @@
     "require-dev": {
         "webflo/drupal-core-require-dev": "^8.4"
     },
+    "replace": {
+        "drupal/thunder_admin": "*"
+    },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "autoload": {
