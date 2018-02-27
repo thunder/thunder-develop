@@ -59,19 +59,27 @@ class ScriptHandler {
   public static function downloadDistribution(Event $event) {
     $fs = new Filesystem();
     $composer = $event->getComposer();
+    $repositoryManager = $composer->getRepositoryManager();
     $installationManager = $composer->getInstallationManager();
-    $downloadManager = $composer->getDownloadManager();
-    $extra = $composer->getPackage()->getExtra();
-    $packages = $extra['local-develop-packages'];
+
+    $rootPackage = $composer->getPackage();
+    $rootExtra = $rootPackage->getExtra();
+
+    $packages = $rootExtra['local-develop-packages'];
 
     foreach ($packages as $packageString => $packageVersion) {
-      $package = $composer->getRepositoryManager()
-        ->findPackage($packageString, $packageVersion);
+      $package = $repositoryManager->findPackage($packageString, $packageVersion);
       if ($package) {
         $installPath = $installationManager->getInstaller($package->getType())
           ->getInstallPath($package);
         if (!$fs->exists($installPath)) {
-          $downloadManager->download($package, $installPath, TRUE);
+          $repository = $package->getRepository();
+          if ($gitDriver = $repository->getDriver()) {
+            $gitDriver = $repository->getDriver();
+            $repositoryUrl = $gitDriver->getUrl();
+            exec('git clone ' . $repositoryUrl . ' ' . $installPath);
+            $event->getIO()->write("Downloaded " . $packageString);
+          }
         }
       }
     }
