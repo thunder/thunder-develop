@@ -66,6 +66,9 @@
         "symfony/css-selector": "~3.2.8",
         "symfony/phpunit-bridge": "~3.2.8"
     },
+    "replace": {
+        "drupal/thunder_admin": "*"
+    },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "autoload": {
