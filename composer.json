@@ -50,7 +50,6 @@
         "wikimedia/composer-merge-plugin": "^1.4"
     },
     "require-dev": {
-        "burdamagazinorg/robo": "~2",
         "webflo/drupal-core-require-dev": "^8.4"
     },
     "minimum-stability": "dev",
