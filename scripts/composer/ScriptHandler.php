@@ -66,6 +66,7 @@ class ScriptHandler {
     $rootExtra = $rootPackage->getExtra();
 
     $packages = $rootExtra['local-develop-packages'];
+    $updateProject = FALSE;
 
     foreach ($packages as $packageString => $packageVersion) {
       $package = $repositoryManager->findPackage($packageString, $packageVersion);
@@ -79,6 +80,7 @@ class ScriptHandler {
             $repositoryUrl = $gitDriver->getUrl();
             exec('git clone ' . $repositoryUrl . ' ' . $installPath);
             $event->getIO()->write("Downloaded " . $packageString);
+            $updateProject = TRUE;
           }
         }
       }
