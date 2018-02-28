@@ -94,7 +94,8 @@
                 "docroot/profiles/contrib/thunder/composer.json"
             ],
             "replace": true,
-            "merge-extra": true
+            "merge-extra": true,
+            "merge-extra-deep": true
         },
         "thunder-package": "burdamagazinorg/thunder",
         "enable-patching": true
