@@ -41,6 +41,10 @@
         {
             "type": "vcs",
             "url": "git@github.com:BurdaMagazinOrg/thunder-distribution.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@github.com:thunder/paragraphs_features.git"
         }
     ],
     "require": {
@@ -57,7 +61,8 @@
         "webflo/drupal-core-require-dev": "^8.4"
     },
     "replace": {
-        "drupal/thunder_admin": "*"
+        "drupal/thunder_admin": "*",
+        "drupal/paragraphs_features": "*"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -69,7 +74,7 @@
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "pre-update-cmd": [
-            "ThunderDevelop\\composer\\ScriptHandler::downloadDistribution"
+            "ThunderDevelop\\composer\\ScriptHandler::downloadDevelopPackages"
         ],
         "post-install-cmd": [
             "ThunderDevelop\\composer\\ScriptHandler::createRequiredFiles"
@@ -101,7 +106,8 @@
         },
         "local-develop-packages": {
             "burdamagazinorg/thunder": "dev-develop",
-            "drupal/thunder_admin": "dev-8.x-2.x"
+            "drupal/thunder_admin": "dev-8.x-2.x",
+            "drupal/paragraphs_features": "dev-8.x-1.x"
         },
         "enable-patching": true
     }

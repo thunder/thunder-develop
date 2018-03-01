@@ -5,6 +5,8 @@
  */
 namespace ThunderDevelop\composer;
 
+use Composer\DependencyResolver\Operation\InstallOperation;
+use Composer\Installer;
 use Composer\Script\Event;
 
 use DrupalFinder\DrupalFinder;
@@ -56,7 +58,7 @@ class ScriptHandler {
     }
   }
 
-  public static function downloadDistribution(Event $event) {
+  public static function downloadDevelopPackages(Event $event) {
     $fs = new Filesystem();
     $composer = $event->getComposer();
     $repositoryManager = $composer->getRepositoryManager();
@@ -66,7 +68,8 @@ class ScriptHandler {
     $rootExtra = $rootPackage->getExtra();
 
     $packages = $rootExtra['local-develop-packages'];
-    $updateProject = FALSE;
+
+    $missingFiles = self::findMissingMergeIncludes($rootExtra['merge-plugin']);
 
     foreach ($packages as $packageString => $packageVersion) {
       $package = $repositoryManager->findPackage($packageString, $packageVersion);
@@ -80,10 +83,38 @@ class ScriptHandler {
             $repositoryUrl = $gitDriver->getUrl();
             exec('git clone ' . $repositoryUrl . ' ' . $installPath);
             $event->getIO()->write("Downloaded " . $packageString);
-            $updateProject = TRUE;
           }
         }
       }
     }
+
+    $missingFilesAfterDownloads = self::findMissingMergeIncludes($rootExtra['merge-plugin']);
+
+    // Install new requirements, if a file that will be merged has been added.
+    if (!empty(array_diff($missingFiles, $missingFilesAfterDownloads))) {
+      $install = Installer::create($event->getIO(), $composer);
+      $install->run();
+    }
+  }
+
+  /**
+   * Find missing files, that should be merged.
+   *
+   * @param $mergePluginConfig
+   *  The merge plugin configuration from the extra section.
+   * @return array
+   *  Files that are missing.
+   */
+  protected static function findMissingMergeIncludes($mergePluginConfig) {
+    $fs = new Filesystem();
+    $missingFiles = [];
+
+    foreach ($mergePluginConfig['include'] as $mergeInclude) {
+      if (!$fs->exists($mergeInclude)) {
+        $missingFiles[] = $mergeInclude;
+      }
+    }
+
+    return $missingFiles;
   }
 }
