@@ -50,7 +50,7 @@
     "require": {
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
-        "drupal/core": "~8.4",
+        "drupal/core": "~8.5",
         "drupal-composer/drupal-scaffold": "^2.2",
         "drush/drush": "~8.0",
         "webflo/drupal-finder": "^1.0.0",
