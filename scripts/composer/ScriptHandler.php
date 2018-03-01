@@ -60,13 +60,14 @@ class ScriptHandler {
 
   public static function downloadDevelopPackages(Event $event) {
     $fs = new Filesystem();
+
+    $io = $event->getIO();
     $composer = $event->getComposer();
     $repositoryManager = $composer->getRepositoryManager();
     $installationManager = $composer->getInstallationManager();
-
     $rootPackage = $composer->getPackage();
-    $rootExtra = $rootPackage->getExtra();
 
+    $rootExtra = $rootPackage->getExtra();
     $packages = $rootExtra['local-develop-packages'];
 
     $missingFiles = self::findMissingMergeIncludes($rootExtra['merge-plugin']);
@@ -82,7 +83,6 @@ class ScriptHandler {
             $gitDriver = $repository->getDriver();
             $repositoryUrl = $gitDriver->getUrl();
             exec('git clone ' . $repositoryUrl . ' ' . $installPath);
-            $event->getIO()->write("Downloaded " . $packageString);
           }
         }
       }
@@ -92,8 +92,18 @@ class ScriptHandler {
 
     // Install new requirements, if a file that will be merged has been added.
     if (!empty(array_diff($missingFiles, $missingFilesAfterDownloads))) {
-      $install = Installer::create($event->getIO(), $composer);
-      $install->run();
+      $config = $composer->getConfig();
+
+      $installer = Installer::create(
+        $io,
+        $composer
+      );
+
+      $installer->setPreferSource($config->get('preferred-install') === 'source');
+      $installer->setPreferDist($config->get('preferred-install') === 'dist');
+      $installer->setDevMode($event->isDevMode());
+      $installer->run();
+
     }
   }
 
