@@ -5,8 +5,8 @@
  */
 namespace ThunderDevelop\composer;
 
-use Composer\DependencyResolver\Operation\InstallOperation;
-use Composer\Installer;
+use Composer\Composer;
+use Composer\Package\PackageInterface;
 use Composer\Script\Event;
 
 use DrupalFinder\DrupalFinder;
@@ -64,67 +64,107 @@ class ScriptHandler {
     $io = $event->getIO();
     $composer = $event->getComposer();
     $repositoryManager = $composer->getRepositoryManager();
-    $installationManager = $composer->getInstallationManager();
     $rootPackage = $composer->getPackage();
 
     $rootExtra = $rootPackage->getExtra();
     $packages = $rootExtra['local-develop-packages'];
 
-    $missingFiles = self::findMissingMergeIncludes($rootExtra['merge-plugin']);
-
     foreach ($packages as $packageString => $packageVersion) {
       $package = $repositoryManager->findPackage($packageString, $packageVersion);
       if ($package) {
-        $installPath = $installationManager->getInstaller($package->getType())
-          ->getInstallPath($package);
+        $installPath = self::getInstallPath($package, $composer);
+
         if (!$fs->exists($installPath)) {
           $repository = $package->getRepository();
           if ($gitDriver = $repository->getDriver()) {
             $gitDriver = $repository->getDriver();
             $repositoryUrl = $gitDriver->getUrl();
             exec('git clone ' . $repositoryUrl . ' ' . $installPath);
+            $io->write('Cloning repository: ' . $packageString);
           }
         }
       }
     }
-
-    $missingFilesAfterDownloads = self::findMissingMergeIncludes($rootExtra['merge-plugin']);
-
-    // Install new requirements, if a file that will be merged has been added.
-    if (!empty(array_diff($missingFiles, $missingFilesAfterDownloads))) {
-      $config = $composer->getConfig();
-
-      $installer = Installer::create(
-        $io,
-        $composer
-      );
-
-      $installer->setPreferSource($config->get('preferred-install') === 'source');
-      $installer->setPreferDist($config->get('preferred-install') === 'dist');
-      $installer->setDevMode($event->isDevMode());
-      $installer->run();
-
-    }
   }
 
   /**
-   * Find missing files, that should be merged.
+   * Return the install path based on package type.
    *
-   * @param $mergePluginConfig
-   *  The merge plugin configuration from the extra section.
-   * @return array
-   *  Files that are missing.
+   * @param \Composer\Package\PackageInterface $package
+   * @param \Composer\Composer $composer
+   *
+   * @return bool|string
    */
-  protected static function findMissingMergeIncludes($mergePluginConfig) {
-    $fs = new Filesystem();
-    $missingFiles = [];
+  protected static function getInstallPath(PackageInterface $package, Composer $composer) {
+    $type = $package->getType();
 
-    foreach ($mergePluginConfig['include'] as $mergeInclude) {
-      if (!$fs->exists($mergeInclude)) {
-        $missingFiles[] = $mergeInclude;
+    $prettyName = $package->getPrettyName();
+    if (strpos($prettyName, '/') !== false) {
+      list($vendor, $name) = explode('/', $prettyName);
+    } else {
+      $vendor = '';
+      $name = $prettyName;
+    }
+
+    $availableVars = compact('name', 'vendor', 'type');
+
+    $extra = $package->getExtra();
+    if (!empty($extra['installer-name'])) {
+      $availableVars['name'] = $extra['installer-name'];
+    }
+
+    if ($composer->getPackage()) {
+      $extra = $composer->getPackage()->getExtra();
+      if (!empty($extra['installer-paths'])) {
+        $customPath = self::mapCustomInstallPaths($extra['installer-paths'], $prettyName, $type, $vendor);
+        if ($customPath !== false) {
+          return self::templatePath($customPath, $availableVars);
+        }
       }
     }
 
-    return $missingFiles;
+    return false;
   }
+
+
+  /**
+   * Search through a passed paths array for a custom install path.
+   *
+   * @param  array  $paths
+   * @param  string $name
+   * @param  string $type
+   * @param  string $vendor = NULL
+   * @return string
+   */
+  protected static function mapCustomInstallPaths(array $paths, $name, $type, $vendor = NULL) {
+    foreach ($paths as $path => $names) {
+      if (in_array($name, $names) || in_array('type:' . $type, $names) || in_array('vendor:' . $vendor, $names)) {
+        return $path;
+      }
+    }
+
+    return false;
+  }
+
+  /**
+   * Replace vars in a path.
+   *
+   * @param  string $path
+   * @param  array  $vars
+   * @return string
+   */
+  protected static function templatePath($path, array $vars = array()) {
+    if (strpos($path, '{') !== false) {
+      extract($vars);
+      preg_match_all('@\{\$([A-Za-z0-9_]*)\}@i', $path, $matches);
+      if (!empty($matches[1])) {
+        foreach ($matches[1] as $var) {
+          $path = str_replace('{$' . $var . '}', $$var, $path);
+        }
+      }
+    }
+
+    return $path;
+  }
+
 }
