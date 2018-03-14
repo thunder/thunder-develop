@@ -25,28 +25,28 @@
             "email": "alex.a.pott@gmail.com"
         }
     ],
-    "repositories": [
-        {
+    "repositories": {
+        "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         },
-        {
+        "assets": {
             "type": "composer",
             "url": "https://asset-packagist.org"
         },
-        {
-            "type": "vcs",
+        "admin": {
+            "type": "git",
             "url": "git@github.com:BurdaMagazinOrg/theme-thunder-admin.git"
         },
-        {
-            "type": "vcs",
-            "url": "git@github.com:BurdaMagazinOrg/thunder-distribution.git"
+        "thunder": {
+            "type": "git",
+            "url": "git@github.com/BurdaMagazinOrg/thunder-distribution.git"
         },
-        {
-            "type": "vcs",
+        "paragraphs_features": {
+            "type": "git",
             "url": "git@github.com:thunder/paragraphs_features.git"
         }
-    ],
+    },
     "require": {
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
