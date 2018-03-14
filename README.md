@@ -11,7 +11,22 @@ If the docroot folder does not contain the index.php execute the drupal-scaffold
 
     composer drupal-scaffold
     
-Now you can install thunder. Point the web server to the docroot directory and do a normal site install. 
+We recommend to use ddev for local development (see https://github.com/drud/ddev for more information and installation). 
+After installing ddev you can do: 
+
+    ddev start
+
+in the project root folder. Now you can access your site in a browser by going to http://thunder-develop.ddev.local/
+and do a site install.
+    
+To use drush you can do:
+
+    ddev exec drush <command>
+    
+To enter the docker environment do:
+
+    ddev ssh
+
 
 To work on the distribution, work inside the docroot/profiles/contrib/thunder
 folder. 
@@ -20,5 +35,3 @@ folder.
     git checkout -b feature/new-thunder-feature # <-- this will be a branch in the distribution not the project
     <make changes>
     git commit .
-    
-
