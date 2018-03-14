@@ -40,7 +40,7 @@
         },
         "thunder": {
             "type": "git",
-            "url": "git@github.com/BurdaMagazinOrg/thunder-distribution.git"
+            "url": "git@github.com:BurdaMagazinOrg/thunder-distribution.git"
         },
         "paragraphs_features": {
             "type": "git",
