@@ -25,24 +25,32 @@
             "email": "alex.a.pott@gmail.com"
         }
     ],
-    "repositories": [
-        {
+    "repositories": {
+        "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         },
-        {
+        "assets": {
             "type": "composer",
             "url": "https://asset-packagist.org"
         },
-        {
-            "type": "vcs",
-            "url": "https://github.com/BurdaMagazinOrg/thunder-distribution"
+        "admin": {
+            "type": "git",
+            "url": "git@github.com:BurdaMagazinOrg/theme-thunder-admin.git"
+        },
+        "thunder": {
+            "type": "git",
+            "url": "git@github.com:BurdaMagazinOrg/thunder-distribution.git"
+        },
+        "paragraphs_features": {
+            "type": "git",
+            "url": "git@github.com:thunder/paragraphs_features.git"
         }
-    ],
+    },
     "require": {
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
-        "drupal/core": "~8.4",
+        "drupal/core": "~8.5",
         "drupal-composer/drupal-scaffold": "^2.2",
         "drush/drush": "~8.0",
         "webflo/drupal-finder": "^1.0.0",
@@ -51,6 +59,10 @@
     },
     "require-dev": {
         "webflo/drupal-core-require-dev": "^8.4"
+    },
+    "replace": {
+        "drupal/thunder_admin": "*",
+        "drupal/paragraphs_features": "*"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -61,19 +73,14 @@
     },
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-        "pre-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::downloadDistribution"
-        ],
         "pre-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::downloadDistribution"
+            "ThunderDevelop\\composer\\ScriptHandler::downloadDevelopPackages"
         ],
         "post-install-cmd": [
-            "@drupal-scaffold",
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "ThunderDevelop\\composer\\ScriptHandler::createRequiredFiles"
         ],
         "post-update-cmd": [
-            "@drupal-scaffold",
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "ThunderDevelop\\composer\\ScriptHandler::createRequiredFiles"
         ]
     },
     "extra": {
@@ -97,7 +104,11 @@
             "merge-extra": true,
             "merge-extra-deep": true
         },
-        "thunder-package": "burdamagazinorg/thunder",
+        "local-develop-packages": {
+            "burdamagazinorg/thunder": "dev-develop",
+            "drupal/thunder_admin": "dev-8.x-2.x",
+            "drupal/paragraphs_features": "dev-8.x-1.x"
+        },
         "enable-patching": true
     }
 }
