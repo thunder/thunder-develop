@@ -13,4 +13,4 @@ composer.lock
 .idea
 .DS_Store
 .ddev/docker-compose.yaml
-.ddev/**/
+.ddev/*/
