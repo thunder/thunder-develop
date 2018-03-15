@@ -3,8 +3,8 @@ name: thunder-develop
 type: drupal8
 docroot: docroot
 php_version: "7.1"
-webimage: drud/nginx-php-fpm-local:v1.0.0
-dbimage: drud/mariadb-local:v0.7.1
+webimage: drud/nginx-php-fpm-local:v1.1.0
+dbimage: drud/mariadb-local:v0.8.0
 dbaimage: drud/phpmyadmin:v0.2.0
 router_http_port: "80"
 router_https_port: "443"
