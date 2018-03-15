@@ -56,7 +56,8 @@
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
         "wikimedia/composer-merge-plugin": "^1.4",
-        "drupal/console": "~1.0"
+        "drupal/console": "~1.0",
+        "burdamagazinorg/image-derive-all": "dev-master"
     },
     "require-dev": {
         "webflo/drupal-core-require-dev": "^8.4"
