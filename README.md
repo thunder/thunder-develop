@@ -20,5 +20,13 @@ folder.
     git checkout -b feature/new-thunder-feature # <-- this will be a branch in the distribution not the project
     <make changes>
     git commit .
-    
 
+### Running tests for Thunder Distribution with `ddev`
+
+To run tests for distribution Selenium docker container is required. That's provided with `docker-compose.selenium.yaml`.
+Tests has to be executed inside `web` container, that's why it's required to ssh inside with `ddev ssh`.
+After that global environment variable should be set:
+```export THUNDER_WEBDRIVER_HOST="selenium:4444"```
+with that environment for executing tests is set.
+
+Tests can be run like this: `php core/scripts/run-tests.sh --url http://thunder.ddev.local --verbose Thunder`

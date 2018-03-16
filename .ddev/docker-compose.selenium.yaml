@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  selenium:
+    container_name: ddev-${DDEV_SITENAME}-selenium
+    # Currently we are using locked version of selenium on Travis CI, that's why it's locked also here.
+    image: selenium/standalone-chrome-debug:3.8.1-aluminum
+    volumes:
+      - ".:/mnt/ddev_config"
+    restart: "no"
+    links:
+      - web:$DDEV_HOSTNAME
+    ports:
+      - "4444"
+      - "6000:5900"
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.platform: ddev
+      com.ddev.app-type: drupal8
+      com.ddev.approot: $DDEV_APPROOT
+      com.ddev.app-url: $DDEV_URL

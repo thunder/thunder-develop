@@ -13,3 +13,7 @@ composer.lock
 .idea
 .DS_Store
 
+# Additional ddev files that should not be versioned
+.ddev/config.yaml
+.ddev/docker-compose.yaml
+
