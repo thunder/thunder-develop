@@ -43,9 +43,3 @@ You can use drush to install thunder:
     
 By default, xdebug is disabled, you can change that in tha .lando.yml file by setting "xdebug: false".
 The .lando.yml file can be used to customize your environment, see: https://docs.devwithlando.io/tutorials/drupal8.html
-
-
-
-
- 
-
