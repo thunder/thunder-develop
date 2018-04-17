@@ -1,0 +1,7 @@
+name: thunder
+recipe: drupal8
+config:
+  webroot: docroot
+  drush: composer
+  xdebug: false
+  database: mariadb
