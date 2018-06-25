@@ -111,5 +111,8 @@
             "drupal/paragraphs_features": "dev-8.x-1.x"
         },
         "enable-patching": true
+    },
+    "config": {
+        "process-timeout": 2000
     }
 }
