@@ -45,6 +45,10 @@
         "paragraphs_features": {
             "type": "git",
             "url": "git@github.com:thunder/paragraphs_features.git"
+        },
+        "custom_list": {
+            "type": "git",
+            "url": "git@github.com:thunder/custom_list.git"
         }
     },
     "require": {
@@ -108,8 +112,12 @@
         "local-develop-packages": {
             "burdamagazinorg/thunder": "dev-8.x-2.x",
             "drupal/thunder_admin": "dev-8.x-2.x",
-            "drupal/paragraphs_features": "dev-8.x-1.x"
+            "drupal/paragraphs_features": "dev-8.x-1.x",
+            "drupal/custom_list": "dev-8.x-1.x"
         },
         "enable-patching": true
+    },
+    "config": {
+        "process-timeout": 2000
     }
 }

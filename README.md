@@ -30,3 +30,25 @@ After that global environment variable should be set:
 with that environment for executing tests is set.
 
 Tests can be run like this: `php core/scripts/run-tests.sh --url http://thunder.ddev.local --verbose Thunder`
+
+# Install lando development environment
+Install lando and its requirements: https://docs.devwithlando.io/
+then call:
+
+    lando start
+
+This will install appropriate docker containers. Now you can access your installation at http://thunder.lndo.site/
+To use composer within the container call:
+
+    lando composer 
+
+To use drush call:
+
+    lando drush 
+    
+You can use drush to install thunder:
+
+    lando drush si thunder --db-url=mysql://drupal8:drupal8@database/drupal8 
+    
+By default, xdebug is disabled, you can change that in tha .lando.yml file by setting "xdebug: false".
+The .lando.yml file can be used to customize your environment, see: https://docs.devwithlando.io/tutorials/drupal8.html
