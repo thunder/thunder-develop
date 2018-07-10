@@ -49,6 +49,10 @@
         "custom_list": {
             "type": "git",
             "url": "git@github.com:thunder/custom_list.git"
+        },
+        "select2": {
+            "type": "git",
+            "url": "git@github.com:thunder/select2.git"
         }
     },
     "require": {
@@ -60,7 +64,8 @@
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
         "wikimedia/composer-merge-plugin": "^1.4",
-        "drupal/console": "~1.0"
+        "drupal/console": "~1.0",
+        "npm-asset/select2": "~4.0"
     },
     "require-dev": {
         "webflo/drupal-core-require-dev": "^8.4"
@@ -89,12 +94,13 @@
         ]
     },
     "extra": {
-        "installer-types": ["bower-asset"],
+        "installer-types": ["bower-asset", "npm-asset"],
         "installer-paths": {
             "docroot/core": ["type:drupal-core"],
             "docroot/libraries/{$name}": [
                 "type:drupal-library",
-                "type:bower-asset"
+                "type:bower-asset",
+                "type:npm-asset"
             ],
             "docroot/modules/contrib/{$name}": ["type:drupal-module"],
             "docroot/profiles/contrib/{$name}": ["type:drupal-profile"],
@@ -113,6 +119,7 @@
             "burdamagazinorg/thunder": "dev-8.x-2.x",
             "drupal/thunder_admin": "dev-8.x-2.x",
             "drupal/paragraphs_features": "dev-8.x-1.x",
+            "drupal/select2": "dev-8.x-1.x",
             "drupal/custom_list": "dev-8.x-1.x"
         },
         "enable-patching": true
