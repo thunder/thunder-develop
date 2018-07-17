@@ -53,6 +53,10 @@
         "select2": {
             "type": "git",
             "url": "git@github.com:thunder/select2.git"
+        },
+        "riddle": {
+            "type": "git",
+            "url": "git@github.com:BurdaMagazinOrg/module-riddle_marketplace.git"
         }
     },
     "require": {
@@ -72,7 +76,10 @@
     },
     "replace": {
         "drupal/thunder_admin": "*",
-        "drupal/paragraphs_features": "*"
+        "drupal/paragraphs_features": "*",
+        "drupal/select2": "*",
+        "drupal/custom_list": "*",
+        "drupal/riddle_marketplace": "*"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -120,7 +127,8 @@
             "drupal/thunder_admin": "dev-8.x-2.x",
             "drupal/paragraphs_features": "dev-8.x-1.x",
             "drupal/select2": "dev-8.x-1.x",
-            "drupal/custom_list": "dev-8.x-1.x"
+            "drupal/custom_list": "dev-8.x-1.x",
+            "drupal/riddle_marketplace": "dev-8.x-2.x"
         },
         "enable-patching": true
     },
