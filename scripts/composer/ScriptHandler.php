@@ -79,7 +79,7 @@ class ScriptHandler {
           if ($gitDriver = $repository->getDriver()) {
             $gitDriver = $repository->getDriver();
             $repositoryUrl = $gitDriver->getUrl();
-	    $branchOption = (0 === strpos($packageVersion, 'dev-')) ? '-b ' . substr($packageVersion, strlen('dev-')) . ' ' : '';
+            $branchOption = (0 === strpos($packageVersion, 'dev-')) ? '-b ' . substr($packageVersion, strlen('dev-')) . ' ' : '';
             exec('git clone  ' . $branchOption . $repositoryUrl . ' ' . $installPath);
             $io->write('Cloning repository: ' . $packageString);
           }
