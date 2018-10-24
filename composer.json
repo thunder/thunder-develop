@@ -91,6 +91,7 @@
     },
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "reset-repositories": "ThunderDevelop\\composer\\ScriptHandler::resetLocalRepositories",
         "pre-update-cmd": [
             "ThunderDevelop\\composer\\ScriptHandler::downloadDevelopPackages"
         ],

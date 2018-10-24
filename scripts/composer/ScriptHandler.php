@@ -88,6 +88,44 @@ class ScriptHandler {
     }
   }
 
+  public static function resetLocalRepositories(Event $event) {
+    $repositoriesInfo = self::getLocalRepositoriesInfo($event);
+    $drupalFinder = new DrupalFinder();
+    $drupalFinder->locateRoot(getcwd());
+    $composerRoot = $drupalFinder->getComposerRoot();
+
+    foreach ($repositoriesInfo as $info) {
+      exec('git -C ' . $composerRoot . '/' . $info['install_path'] . ' stash');
+      exec('git -C ' . $composerRoot . '/' . $info['install_path'] . ' checkout ' . $info['branch']);
+      exec('git -C ' . $composerRoot . '/' . $info['install_path'] . ' pull');
+    }
+  }
+
+  protected static function getLocalRepositoriesInfo(Event $event) {
+    $repositoriesInfo = [];
+    $composer = $event->getComposer();
+    $repositoryManager = $composer->getRepositoryManager();
+    $rootPackage = $composer->getPackage();
+
+    $rootExtra = $rootPackage->getExtra();
+    $packages = $rootExtra['local-develop-packages'];
+
+    foreach ($packages as $packageString => $packageVersion) {
+      $info = [];
+      $package = $repositoryManager->findPackage($packageString, $packageVersion);
+      if ($package) {
+        $info['install_path'] = self::getInstallPath($package, $composer);
+        $repository = $package->getRepository();
+        if ($gitDriver = $repository->getDriver()) {
+          $info['url'] = $gitDriver->getUrl();
+          $info['branch'] = (0 === strpos($packageVersion, 'dev-')) ? substr($packageVersion, strlen('dev-')) . ' ' : '';
+          $repositoriesInfo[] = $info;
+        }
+      }
+    }
+    return $repositoriesInfo;
+  }
+
   /**
    * Return the install path based on package type.
    *
