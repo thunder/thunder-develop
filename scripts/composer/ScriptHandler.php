@@ -89,15 +89,30 @@ class ScriptHandler {
   }
 
   public static function resetLocalRepositories(Event $event) {
+    $io = $event->getIO();
     $repositoriesInfo = self::getLocalRepositoriesInfo($event);
     $drupalFinder = new DrupalFinder();
     $drupalFinder->locateRoot(getcwd());
     $composerRoot = $drupalFinder->getComposerRoot();
 
-    foreach ($repositoriesInfo as $info) {
-      exec('git -C ' . $composerRoot . '/' . $info['install_path'] . ' stash');
-      exec('git -C ' . $composerRoot . '/' . $info['install_path'] . ' checkout ' . $info['branch']);
-      exec('git -C ' . $composerRoot . '/' . $info['install_path'] . ' pull');
+    $io->write(PHP_EOL);
+    foreach ($repositoriesInfo as $key => $info) {
+      $localBranch = trim(shell_exec('git -C ' . $composerRoot . '/' . $info['install_path'] . ' rev-parse --abbrev-ref HEAD'));
+
+      if ($localBranch === $info['branch']) {
+        $io->write($info['package'] . ' is already on branch ' . $info['branch'], TRUE);
+        continue;
+      }
+
+      $gitStatus = shell_exec('git -C ' . $composerRoot . '/' . $info['install_path'] . ' status --porcelain --untracked-files=no');
+      if (!empty($gitStatus)) {
+        $io->write('Stash local changes in ' . $info['package'] . ':' . $localBranch, TRUE);
+        exec('git -C ' . $composerRoot . '/' . $info['install_path'] . ' stash');
+      }
+
+      $io->write('Checkout ' . $info['package'] . ':' . $info['branch'], TRUE);
+      exec('git -C ' . $composerRoot . '/' . $info['install_path'] . ' checkout -q ' . $info['branch']);
+      exec('git -C ' . $composerRoot . '/' . $info['install_path'] . ' pull -q');
     }
   }
 
@@ -114,11 +129,12 @@ class ScriptHandler {
       $info = [];
       $package = $repositoryManager->findPackage($packageString, $packageVersion);
       if ($package) {
+        $info['package'] = $packageString;
         $info['install_path'] = self::getInstallPath($package, $composer);
         $repository = $package->getRepository();
         if ($gitDriver = $repository->getDriver()) {
           $info['url'] = $gitDriver->getUrl();
-          $info['branch'] = (0 === strpos($packageVersion, 'dev-')) ? substr($packageVersion, strlen('dev-')) . ' ' : '';
+          $info['branch'] = (0 === strpos($packageVersion, 'dev-')) ? substr($packageVersion, strlen('dev-')) : '';
           $repositoriesInfo[] = $info;
         }
       }
