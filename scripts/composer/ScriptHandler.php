@@ -88,6 +88,12 @@ class ScriptHandler {
     }
   }
 
+  /**
+   * Reset local repositories to the default branch.
+   *
+   * @param \Composer\Script\Event $event
+   *   The script event.
+   */
   public static function resetLocalRepositories(Event $event) {
     $io = $event->getIO();
     $repositoriesInfo = self::getLocalRepositoriesInfo($event);
@@ -116,6 +122,18 @@ class ScriptHandler {
     }
   }
 
+  /**
+   * Collect information about local repositories.
+   *
+   * Retrieve available informazion about the repositories defined in the
+   * local-develop-packages key of the composer.json.
+   *
+   * @param \Composer\Script\Event $event
+   *   The script event.
+   *
+   * @return array
+   *   The collected repositories.
+   */
   protected static function getLocalRepositoriesInfo(Event $event) {
     $repositoriesInfo = [];
     $composer = $event->getComposer();
@@ -126,17 +144,19 @@ class ScriptHandler {
     $packages = $rootExtra['local-develop-packages'];
 
     foreach ($packages as $packageString => $packageVersion) {
-      $info = [];
       $package = $repositoryManager->findPackage($packageString, $packageVersion);
-      if ($package) {
+      if (!$package) {
+        continue;
+      }
+
+      $repository = $package->getRepository();
+      if ($gitDriver = $repository->getDriver()) {
+        $info = [];
         $info['package'] = $packageString;
         $info['install_path'] = self::getInstallPath($package, $composer);
-        $repository = $package->getRepository();
-        if ($gitDriver = $repository->getDriver()) {
-          $info['url'] = $gitDriver->getUrl();
-          $info['branch'] = (0 === strpos($packageVersion, 'dev-')) ? substr($packageVersion, strlen('dev-')) : '';
-          $repositoriesInfo[] = $info;
-        }
+        $info['url'] = $gitDriver->getUrl();
+        $info['branch'] = (0 === strpos($packageVersion, 'dev-')) ? substr($packageVersion, strlen('dev-')) : '';
+        $repositoriesInfo[] = $info;
       }
     }
     return $repositoriesInfo;
