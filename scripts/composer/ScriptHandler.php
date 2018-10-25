@@ -137,14 +137,11 @@ class ScriptHandler {
   protected static function getLocalRepositoriesInfo(Event $event) {
     $repositoriesInfo = [];
     $composer = $event->getComposer();
-    $repositoryManager = $composer->getRepositoryManager();
-    $rootPackage = $composer->getPackage();
-
-    $rootExtra = $rootPackage->getExtra();
+    $rootExtra = $composer->getPackage()->getExtra();
     $packages = $rootExtra['local-develop-packages'];
 
     foreach ($packages as $packageString => $packageVersion) {
-      $package = $repositoryManager->findPackage($packageString, $packageVersion);
+      $package = $composer->getRepositoryManager()->findPackage($packageString, $packageVersion);
       if (!$package) {
         continue;
       }
