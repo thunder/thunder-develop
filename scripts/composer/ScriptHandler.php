@@ -89,6 +89,79 @@ class ScriptHandler {
   }
 
   /**
+   * Reset local repositories to the default branch.
+   *
+   * @param \Composer\Script\Event $event
+   *   The script event.
+   */
+  public static function resetLocalRepositories(Event $event) {
+    $io = $event->getIO();
+    $repositoriesInfo = self::getLocalRepositoriesInfo($event);
+    $drupalFinder = new DrupalFinder();
+    $drupalFinder->locateRoot(getcwd());
+    $composerRoot = $drupalFinder->getComposerRoot();
+
+    $io->write(PHP_EOL);
+    foreach ($repositoriesInfo as $key => $info) {
+      $gitCommand = 'git -C ' . $composerRoot . '/' . $info['install_path'];
+
+      $localBranch = trim(shell_exec($gitCommand . ' rev-parse --abbrev-ref HEAD'));
+
+      exec($gitCommand . ' fetch --quiet');
+      $gitStatus = shell_exec($gitCommand . ' status --porcelain');
+      if (!empty($gitStatus)) {
+        $io->write('Stash local changes in ' . $info['package'] . ':' . $localBranch, TRUE);
+        exec($gitCommand . ' stash --include-untracked');
+      }
+
+      if ($localBranch !== $info['branch']) {
+        $io->write('Checkout ' . $info['package'] . ':' . $info['branch'], TRUE);
+        exec($gitCommand . ' checkout --quiet ' . $info['branch']);
+      }
+
+      $io->write('Merge remote changes into ' . $info['package'] . ':' . $info['branch'], TRUE);
+      exec($gitCommand . ' merge --quiet');
+    }
+  }
+
+  /**
+   * Collect information about local repositories.
+   *
+   * Retrieve available informazion about the repositories defined in the
+   * local-develop-packages key of the composer.json.
+   *
+   * @param \Composer\Script\Event $event
+   *   The script event.
+   *
+   * @return array
+   *   The collected repositories.
+   */
+  protected static function getLocalRepositoriesInfo(Event $event) {
+    $repositoriesInfo = [];
+    $composer = $event->getComposer();
+    $rootExtra = $composer->getPackage()->getExtra();
+    $packages = $rootExtra['local-develop-packages'];
+
+    foreach ($packages as $packageString => $packageVersion) {
+      $package = $composer->getRepositoryManager()->findPackage($packageString, $packageVersion);
+      if (!$package) {
+        continue;
+      }
+
+      $repository = $package->getRepository();
+      if ($gitDriver = $repository->getDriver()) {
+        $info = [];
+        $info['package'] = $packageString;
+        $info['install_path'] = self::getInstallPath($package, $composer);
+        $info['url'] = $gitDriver->getUrl();
+        $info['branch'] = (0 === strpos($packageVersion, 'dev-')) ? substr($packageVersion, strlen('dev-')) : '';
+        $repositoriesInfo[] = $info;
+      }
+    }
+    return $repositoriesInfo;
+  }
+
+  /**
    * Return the install path based on package type.
    *
    * @param \Composer\Package\PackageInterface $package
