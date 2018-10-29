@@ -107,19 +107,18 @@ class ScriptHandler {
 
       $localBranch = trim(shell_exec($gitCommand . ' rev-parse --abbrev-ref HEAD'));
 
-      if ($localBranch === $info['branch']) {
-        $io->write($info['package'] . ' is already on branch ' . $info['branch'], TRUE);
-        continue;
-      }
-
       $gitStatus = shell_exec($gitCommand . ' status --porcelain');
       if (!empty($gitStatus)) {
         $io->write('Stash local changes in ' . $info['package'] . ':' . $localBranch, TRUE);
         exec($gitCommand . ' stash --include-untracked');
       }
 
-      $io->write('Checkout ' . $info['package'] . ':' . $info['branch'], TRUE);
-      exec($gitCommand . ' checkout --quiet ' . $info['branch']);
+      if ($localBranch !== $info['branch']) {
+        $io->write('Checkout ' . $info['package'] . ':' . $info['branch'], TRUE);
+        exec($gitCommand . ' checkout --quiet ' . $info['branch']);
+      }
+
+      $io->write('Merge remote changes into ' . $info['package'] . ':' . $info['branch'], TRUE);
       exec($gitCommand . ' pull --quiet');
     }
   }
