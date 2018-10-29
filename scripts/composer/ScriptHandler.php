@@ -107,6 +107,7 @@ class ScriptHandler {
 
       $localBranch = trim(shell_exec($gitCommand . ' rev-parse --abbrev-ref HEAD'));
 
+      exec($gitCommand . ' fetch --quiet');
       $gitStatus = shell_exec($gitCommand . ' status --porcelain');
       if (!empty($gitStatus)) {
         $io->write('Stash local changes in ' . $info['package'] . ':' . $localBranch, TRUE);
@@ -119,7 +120,7 @@ class ScriptHandler {
       }
 
       $io->write('Merge remote changes into ' . $info['package'] . ':' . $info['branch'], TRUE);
-      exec($gitCommand . ' pull --quiet');
+      exec($gitCommand . ' merge --quiet');
     }
   }
 
