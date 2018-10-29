@@ -119,8 +119,8 @@ class ScriptHandler {
       }
 
       $io->write('Checkout ' . $info['package'] . ':' . $info['branch'], TRUE);
-      exec($gitCommand . ' checkout -q ' . $info['branch']);
-      exec($gitCommand . ' pull -q');
+      exec($gitCommand . ' checkout --quiet ' . $info['branch']);
+      exec($gitCommand . ' pull --quiet');
     }
   }
 
