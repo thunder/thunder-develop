@@ -103,22 +103,24 @@ class ScriptHandler {
 
     $io->write(PHP_EOL);
     foreach ($repositoriesInfo as $key => $info) {
-      $localBranch = trim(shell_exec('git -C ' . $composerRoot . '/' . $info['install_path'] . ' rev-parse --abbrev-ref HEAD'));
+      $gitCommand = 'git -C ' . $composerRoot . '/' . $info['install_path'];
+
+      $localBranch = trim(shell_exec($gitCommand . ' rev-parse --abbrev-ref HEAD'));
 
       if ($localBranch === $info['branch']) {
         $io->write($info['package'] . ' is already on branch ' . $info['branch'], TRUE);
         continue;
       }
 
-      $gitStatus = shell_exec('git -C ' . $composerRoot . '/' . $info['install_path'] . ' status --porcelain --untracked-files=no');
+      $gitStatus = shell_exec($gitCommand . ' status --porcelain --untracked-files=no');
       if (!empty($gitStatus)) {
         $io->write('Stash local changes in ' . $info['package'] . ':' . $localBranch, TRUE);
-        exec('git -C ' . $composerRoot . '/' . $info['install_path'] . ' stash');
+        exec($gitCommand . ' stash');
       }
 
       $io->write('Checkout ' . $info['package'] . ':' . $info['branch'], TRUE);
-      exec('git -C ' . $composerRoot . '/' . $info['install_path'] . ' checkout -q ' . $info['branch']);
-      exec('git -C ' . $composerRoot . '/' . $info['install_path'] . ' pull -q');
+      exec($gitCommand . ' checkout -q ' . $info['branch']);
+      exec($gitCommand . ' pull -q');
     }
   }
 
