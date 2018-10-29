@@ -112,10 +112,10 @@ class ScriptHandler {
         continue;
       }
 
-      $gitStatus = shell_exec($gitCommand . ' status --porcelain --untracked-files=no');
+      $gitStatus = shell_exec($gitCommand . ' status --porcelain');
       if (!empty($gitStatus)) {
         $io->write('Stash local changes in ' . $info['package'] . ':' . $localBranch, TRUE);
-        exec($gitCommand . ' stash');
+        exec($gitCommand . ' stash --include-untracked');
       }
 
       $io->write('Checkout ' . $info['package'] . ':' . $info['branch'], TRUE);
