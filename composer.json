@@ -57,6 +57,10 @@
         "riddle": {
             "type": "git",
             "url": "git@github.com:BurdaMagazinOrg/module-riddle_marketplace.git"
+        },
+        "ivw": {
+            "type": "git",
+            "url": "git@github.com:BurdaMagazinOrg/module-ivw_integration.git"
         }
     },
     "require": {
