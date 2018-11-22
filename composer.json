@@ -57,6 +57,10 @@
         "riddle": {
             "type": "git",
             "url": "git@github.com:BurdaMagazinOrg/module-riddle_marketplace.git"
+        },
+        "ivw": {
+            "type": "git",
+            "url": "git@github.com:BurdaMagazinOrg/module-ivw_integration.git"
         }
     },
     "require": {
@@ -80,7 +84,8 @@
         "drupal/paragraphs_features": "*",
         "drupal/select2": "*",
         "drupal/custom_list": "*",
-        "drupal/riddle_marketplace": "*"
+        "drupal/riddle_marketplace": "*",
+        "drupal/ivw_integration": "*"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -130,7 +135,8 @@
             "drupal/paragraphs_features": "dev-8.x-1.x",
             "drupal/select2": "dev-8.x-1.x",
             "drupal/custom_list": "dev-8.x-1.x",
-            "drupal/riddle_marketplace": "dev-8.x-2.x"
+            "drupal/riddle_marketplace": "dev-8.x-2.x",
+            "drupal/ivw_integration": "dev-8.x-1.x"
         },
         "enable-patching": true
     },
