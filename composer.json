@@ -61,6 +61,10 @@
         "ivw": {
             "type": "git",
             "url": "git@github.com:BurdaMagazinOrg/module-ivw_integration.git"
+        },
+        "update_helper": {
+            "type": "git",
+            "url": "git@github.com:BurdaMagazinOrg/module-update_helper.git"
         }
     },
     "require": {
@@ -85,7 +89,8 @@
         "drupal/select2": "*",
         "drupal/custom_list": "*",
         "drupal/riddle_marketplace": "*",
-        "drupal/ivw_integration": "*"
+        "drupal/ivw_integration": "*",
+        "drupal/update_helper": "*"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -136,7 +141,8 @@
             "drupal/select2": "dev-8.x-1.x",
             "drupal/custom_list": "dev-8.x-1.x",
             "drupal/riddle_marketplace": "dev-8.x-2.x",
-            "drupal/ivw_integration": "dev-8.x-1.x"
+            "drupal/ivw_integration": "dev-8.x-1.x",
+            "drupal/update_helper": "dev-8.x-1.x"
         },
         "enable-patching": true
     },
