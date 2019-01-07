@@ -57,6 +57,14 @@
         "riddle": {
             "type": "git",
             "url": "git@github.com:BurdaMagazinOrg/module-riddle_marketplace.git"
+        },
+        "ivw": {
+            "type": "git",
+            "url": "git@github.com:BurdaMagazinOrg/module-ivw_integration.git"
+        },
+        "update_helper": {
+            "type": "git",
+            "url": "git@github.com:BurdaMagazinOrg/module-update_helper.git"
         }
     },
     "require": {
@@ -69,6 +77,7 @@
         "webmozart/path-util": "^2.3",
         "wikimedia/composer-merge-plugin": "^1.4",
         "drupal/console": "~1.0",
+        "burdamagazinorg/image-derive-all": "dev-master",
         "npm-asset/select2": "~4.0",
         "zaporylie/composer-drupal-optimizations": "^1.0"
     },
@@ -80,7 +89,9 @@
         "drupal/paragraphs_features": "*",
         "drupal/select2": "*",
         "drupal/custom_list": "*",
-        "drupal/riddle_marketplace": "*"
+        "drupal/riddle_marketplace": "*",
+        "drupal/ivw_integration": "*",
+        "drupal/update_helper": "*"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -91,6 +102,7 @@
     },
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "reset-repositories": "ThunderDevelop\\composer\\ScriptHandler::resetLocalRepositories",
         "pre-update-cmd": [
             "ThunderDevelop\\composer\\ScriptHandler::downloadDevelopPackages"
         ],
@@ -129,7 +141,9 @@
             "drupal/paragraphs_features": "dev-8.x-1.x",
             "drupal/select2": "dev-8.x-1.x",
             "drupal/custom_list": "dev-8.x-1.x",
-            "drupal/riddle_marketplace": "dev-8.x-2.x"
+            "drupal/riddle_marketplace": "dev-8.x-2.x",
+            "drupal/ivw_integration": "dev-8.x-1.x",
+            "drupal/update_helper": "dev-8.x-1.x"
         },
         "enable-patching": true
     },
