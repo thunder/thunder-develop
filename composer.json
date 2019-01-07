@@ -77,8 +77,7 @@
         "webmozart/path-util": "^2.3",
         "wikimedia/composer-merge-plugin": "^1.4",
         "drupal/console": "~1.0",
-        "burdamagazinorg/image-derive-all": "dev-master",
-        "npm-asset/select2": "~4.0"
+        "burdamagazinorg/image-derive-all": "dev-master"
     },
     "require-dev": {
         "webflo/drupal-core-require-dev": "^8.4"
