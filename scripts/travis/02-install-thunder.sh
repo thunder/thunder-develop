@@ -8,6 +8,7 @@ composer config repositories.select2 git https://github.com/thunder/select2.git
 composer config repositories.riddle git https://github.com/BurdaMagazinOrg/module-riddle_marketplace.git
 composer config repositories.ivw git https://github.com/BurdaMagazinOrg/module-ivw_integration.git
 composer config repositories.update_helper git https://github.com/BurdaMagazinOrg/module-update_helper.git
+composer config repositories.nexx_integration git https://github.com/BurdaMagazinOrg/module-nexx_integration.git
 composer install
 composer drupal-scaffold
 
