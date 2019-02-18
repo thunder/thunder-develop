@@ -11,4 +11,4 @@ composer config repositories.update_helper git https://github.com/BurdaMagazinOr
 composer install
 composer drupal-scaffold
 
-/usr/bin/env PHP_OPTIONS="-d sendmail_path=`which true`" ../vendor/bin/drush si thunder --root=docroot --uri=http://localhost --db-url=mysql://travis@127.0.0.1/thunder -y
+/usr/bin/env PHP_OPTIONS="-d sendmail_path=`which true`" vendor/bin/drush si thunder --root=docroot --uri=http://localhost --db-url=mysql://travis@127.0.0.1/thunder -y
