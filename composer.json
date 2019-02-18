@@ -76,13 +76,15 @@
         "cweagans/composer-patches": "^1.6",
         "drupal/core": "~8.5",
         "drupal-composer/drupal-scaffold": "^2.2",
-        "drush/drush": "~8.0",
+        "drush/drush": "~9",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
         "wikimedia/composer-merge-plugin": "^1.4",
         "drupal/console": "~1.0",
         "burdamagazinorg/image-derive-all": "dev-master",
-        "zaporylie/composer-drupal-optimizations": "^1.0"
+        "zaporylie/composer-drupal-optimizations": "^1.0",
+        "thunder/sampler": "dev-master",
+        "drupal/devel": "^2.0"
     },
     "require-dev": {
         "webflo/drupal-core-require-dev": "^8.4"
@@ -140,7 +142,7 @@
             "merge-extra-deep": true
         },
         "local-develop-packages": {
-            "burdamagazinorg/thunder": "dev-8.x-2.x",
+            "burdamagazinorg/thunder": "dev-feature/2899254-integrate_editorial_search_with_search_api",
             "drupal/thunder_admin": "dev-8.x-2.x",
             "drupal/paragraphs_features": "dev-8.x-1.x",
             "drupal/select2": "dev-8.x-1.x",
