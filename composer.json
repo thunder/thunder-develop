@@ -65,6 +65,10 @@
         "update_helper": {
             "type": "git",
             "url": "git@github.com:BurdaMagazinOrg/module-update_helper.git"
+        },
+        "sampler": {
+            "type": "git",
+            "url": "git@github.com:thunder/sampler.git"
         }
     },
     "require": {
@@ -78,6 +82,7 @@
         "wikimedia/composer-merge-plugin": "^1.4",
         "drupal/console": "~1.0",
         "burdamagazinorg/image-derive-all": "dev-master",
+        "thunder/sampler": "dev-master",
         "zaporylie/composer-drupal-optimizations": "^1.0"
     },
     "require-dev": {
@@ -142,7 +147,8 @@
             "drupal/custom_list": "dev-8.x-1.x",
             "drupal/riddle_marketplace": "dev-8.x-2.x",
             "drupal/ivw_integration": "dev-8.x-1.x",
-            "drupal/update_helper": "dev-8.x-1.x"
+            "drupal/update_helper": "dev-8.x-1.x",
+            "thunder/sampler": "dev-master"
         },
         "enable-patching": true
     },
