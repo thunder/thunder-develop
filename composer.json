@@ -40,7 +40,7 @@
         },
         "thunder": {
             "type": "git",
-            "url": "git@github.com:BurdaMagazinOrg/thunder-distribution.git"
+            "url": "git@github.com:thunder/thunder-distribution.git"
         },
         "paragraphs_features": {
             "type": "git",
@@ -69,6 +69,10 @@
         "sampler": {
             "type": "git",
             "url": "git@github.com:thunder/sampler.git"
+        },
+        "thunder_performance_measurement": {
+            "type": "git",
+            "url": "git@github.com:thunder/thunder_performance_measurement.git"
         }
     },
     "require": {
@@ -95,7 +99,8 @@
         "drupal/custom_list": "*",
         "drupal/riddle_marketplace": "*",
         "drupal/ivw_integration": "*",
-        "drupal/update_helper": "*"
+        "drupal/update_helper": "*",
+        "thunder/thunder_performance_measurement": "*"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -140,14 +145,15 @@
             "merge-extra-deep": true
         },
         "local-develop-packages": {
-            "burdamagazinorg/thunder": "dev-8.x-2.x",
-            "drupal/thunder_admin": "dev-8.x-2.x",
+            "thunder/thunder-distribution": "dev-8.x-3.x",
+            "drupal/thunder_admin": "dev-8.x-3.x",
             "drupal/paragraphs_features": "dev-8.x-1.x",
             "drupal/select2": "dev-8.x-1.x",
             "drupal/custom_list": "dev-8.x-1.x",
             "drupal/riddle_marketplace": "dev-8.x-2.x",
             "drupal/ivw_integration": "dev-8.x-1.x",
-            "drupal/update_helper": "dev-8.x-1.x"
+            "drupal/update_helper": "dev-8.x-1.x",
+            "thunder/thunder_performance_measurement": "dev-master"
         },
         "enable-patching": true
     },
