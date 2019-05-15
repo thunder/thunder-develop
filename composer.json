@@ -40,7 +40,7 @@
         },
         "thunder": {
             "type": "git",
-            "url": "git@github.com:BurdaMagazinOrg/thunder-distribution.git"
+            "url": "git@github.com:thunder/thunder-distribution.git"
         },
         "paragraphs_features": {
             "type": "git",
@@ -140,8 +140,8 @@
             "merge-extra-deep": true
         },
         "local-develop-packages": {
-            "burdamagazinorg/thunder": "dev-8.x-2.x",
-            "drupal/thunder_admin": "dev-8.x-2.x",
+            "thunder/thunder-distribution": "dev-8.x-3.x",
+            "drupal/thunder_admin": "dev-8.x-3.x",
             "drupal/paragraphs_features": "dev-8.x-1.x",
             "drupal/select2": "dev-8.x-1.x",
             "drupal/custom_list": "dev-8.x-1.x",
