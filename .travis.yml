@@ -11,7 +11,7 @@ cache:
 
 branches:
   only:
-    - master
+    - 2.x
 
 mysql:
   database: thunder
