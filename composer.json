@@ -86,7 +86,6 @@
         "wikimedia/composer-merge-plugin": "^1.4",
         "drupal/console": "~1.0",
         "burdamagazinorg/image-derive-all": "dev-master",
-        "thunder/sampler": "dev-master",
         "zaporylie/composer-drupal-optimizations": "^1.0"
     },
     "require-dev": {
@@ -100,6 +99,7 @@
         "drupal/riddle_marketplace": "*",
         "drupal/ivw_integration": "*",
         "drupal/update_helper": "*",
+        "thunder/sampler": "*",
         "thunder/thunder_performance_measurement": "*"
     },
     "minimum-stability": "dev",
