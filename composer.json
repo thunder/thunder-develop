@@ -153,6 +153,7 @@
             "drupal/riddle_marketplace": "dev-8.x-2.x",
             "drupal/ivw_integration": "dev-8.x-1.x",
             "drupal/update_helper": "dev-8.x-1.x",
+            "thunder/sampler": "dev-master",
             "thunder/thunder_performance_measurement": "dev-master"
         },
         "enable-patching": true
