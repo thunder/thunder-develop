@@ -66,6 +66,10 @@
             "type": "git",
             "url": "git@github.com:BurdaMagazinOrg/module-update_helper.git"
         },
+        "sampler": {
+            "type": "git",
+            "url": "git@github.com:thunder/sampler.git"
+        },
         "thunder_performance_measurement": {
             "type": "git",
             "url": "git@github.com:thunder/thunder_performance_measurement.git"
@@ -95,6 +99,7 @@
         "drupal/riddle_marketplace": "*",
         "drupal/ivw_integration": "*",
         "drupal/update_helper": "*",
+        "thunder/sampler": "*",
         "thunder/thunder_performance_measurement": "*"
     },
     "minimum-stability": "dev",
@@ -148,6 +153,7 @@
             "drupal/riddle_marketplace": "dev-8.x-2.x",
             "drupal/ivw_integration": "dev-8.x-1.x",
             "drupal/update_helper": "dev-8.x-1.x",
+            "thunder/sampler": "dev-master",
             "thunder/thunder_performance_measurement": "dev-master"
         },
         "enable-patching": true
