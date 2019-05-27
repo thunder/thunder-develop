@@ -77,16 +77,16 @@
     },
     "require": {
         "composer/installers": "^1.2",
-        "cweagans/composer-patches": "^1.6",
+        "cweagans/composer-patches": "^1.6.5",
         "drupal/core": "~8.5",
-        "drupal-composer/drupal-scaffold": "^2.2",
+        "drupal-composer/drupal-scaffold": "^2.5",
         "drush/drush": "~9.0",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
         "wikimedia/composer-merge-plugin": "^1.4",
         "drupal/console": "~1.0",
         "burdamagazinorg/image-derive-all": "dev-master",
-        "zaporylie/composer-drupal-optimizations": "^1.0"
+        "zaporylie/composer-drupal-optimizations": "^1.1"
     },
     "require-dev": {
         "webflo/drupal-core-require-dev": "^8.4"
