@@ -150,7 +150,7 @@
             "drupal/paragraphs_features": "dev-8.x-1.x",
             "drupal/select2": "dev-8.x-1.x",
             "drupal/custom_list": "dev-8.x-1.x",
-            "drupal/riddle_marketplace": "dev-8.x-2.x",
+            "drupal/riddle_marketplace": "dev-8.x-3.x",
             "drupal/ivw_integration": "dev-8.x-1.x",
             "drupal/update_helper": "dev-8.x-1.x",
             "thunder/sampler": "dev-master",
