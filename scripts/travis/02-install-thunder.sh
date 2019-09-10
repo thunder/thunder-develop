@@ -10,6 +10,7 @@ composer config repositories.ivw git https://github.com/BurdaMagazinOrg/module-i
 composer config repositories.update_helper git https://github.com/BurdaMagazinOrg/module-update_helper.git
 composer config repositories.sampler git https://github.com/thunder/sampler.git
 composer config repositories.thunder_performance_measurement git https://github.com/thunder/thunder_performance_measurement.git
+composer config repositories.testsite_builder git https://github.com/thunder/testsite_builder.git
 composer install
 
 cd docroot

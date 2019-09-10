@@ -73,6 +73,10 @@
         "thunder_performance_measurement": {
             "type": "git",
             "url": "git@github.com:thunder/thunder_performance_measurement.git"
+        },
+        "testsite_builder": {
+            "type": "git",
+            "url": "git@github.com:thunder/testsite_builder.git"
         }
     },
     "require": {
@@ -100,7 +104,8 @@
         "drupal/ivw_integration": "*",
         "drupal/update_helper": "*",
         "thunder/sampler": "*",
-        "thunder/thunder_performance_measurement": "*"
+        "thunder/thunder_performance_measurement": "*",
+        "thunder/testsite_builder": "*"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -154,7 +159,8 @@
             "drupal/ivw_integration": "dev-8.x-1.x",
             "drupal/update_helper": "dev-8.x-1.x",
             "thunder/sampler": "dev-master",
-            "thunder/thunder_performance_measurement": "dev-master"
+            "thunder/thunder_performance_measurement": "dev-master",
+            "thunder/testsite_builder": "dev-master"
         },
         "enable-patching": true
     },
