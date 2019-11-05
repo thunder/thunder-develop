@@ -77,6 +77,10 @@
         "testsite_builder": {
             "type": "git",
             "url": "git@github.com:thunder/testsite_builder.git"
+        },
+        "thunder_testing_demo": {
+            "type": "git",
+            "url": "git@github.com:thunder/thunder_testing_demo.git"
         }
     },
     "require": {
@@ -105,7 +109,8 @@
         "drupal/update_helper": "*",
         "thunder/sampler": "*",
         "thunder/thunder_performance_measurement": "*",
-        "thunder/testsite_builder": "*"
+        "thunder/testsite_builder": "*",
+        "thunder/thunder_testing_demo": "*"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -160,7 +165,8 @@
             "drupal/update_helper": "dev-8.x-1.x",
             "thunder/sampler": "dev-master",
             "thunder/thunder_performance_measurement": "dev-master",
-            "thunder/testsite_builder": "dev-master"
+            "thunder/testsite_builder": "dev-master",
+            "thunder/thunder_testing_demo": "3.x-dev"
         },
         "enable-patching": true
     },
