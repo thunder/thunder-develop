@@ -11,6 +11,7 @@ composer config repositories.update_helper git https://github.com/BurdaMagazinOr
 composer config repositories.sampler git https://github.com/thunder/sampler.git
 composer config repositories.thunder_performance_measurement git https://github.com/thunder/thunder_performance_measurement.git
 composer config repositories.testsite_builder git https://github.com/thunder/testsite_builder.git
+composer config repositories.thunder_testing_demo git https://github.com/thunder/thunder_testing_demo.git
 composer install
 
 cd docroot
