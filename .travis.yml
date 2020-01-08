@@ -9,6 +9,10 @@ cache:
   - "$HOME/.composer/cache"
   - "$HOME/.drush/cache"
 
+env:
+  global:
+    - COMPOSER_MEMORY_LIMIT=-1
+
 branches:
   only:
     - 3.x
