@@ -13,3 +13,5 @@ composer.lock
 .idea
 .DS_Store
 
+.editorconfig
+.gitattributes
