@@ -88,7 +88,7 @@
         "cweagans/composer-patches": "^1.6.5",
         "drupal/core-recommended": "^8.8",
         "drupal/core-composer-scaffold": "^8.8",
-        "drush/drush": "~10.0",
+        "drush/drush": "~9.0||~10.0",
         "webflo/drupal-finder": "^1.0.0",
         "wikimedia/composer-merge-plugin": "^1.4",
         "drupal/console": "~1.0",
