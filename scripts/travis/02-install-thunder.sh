@@ -3,6 +3,7 @@
 composer config repositories.thunder git https://github.com/thunder/thunder-distribution.git
 composer config repositories.admin git https://github.com/BurdaMagazinOrg/theme-thunder-admin.git
 composer config repositories.paragraphs_features git https://github.com/thunder/paragraphs_features.git
+composer config repositories.paragraphs_paste git https://github.com/thunder/paragraphs_paste.git
 composer config repositories.custom_list git https://github.com/thunder/custom_list.git
 composer config repositories.select2 git https://github.com/thunder/select2.git
 composer config repositories.riddle git https://github.com/BurdaMagazinOrg/module-riddle_marketplace.git
