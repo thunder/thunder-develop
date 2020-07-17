@@ -81,12 +81,17 @@
         "thunder_testing_demo": {
             "type": "git",
             "url": "git@github.com:thunder/thunder_testing_demo.git"
+        },
+        "paragraphs_paste": {
+            "type": "git",
+            "url": "git@github.com:thunder/paragraphs_paste.git"
         }
     },
     "require": {
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6.5",
         "drupal/core-composer-scaffold": "^8.8||^9.0",
+        "drupal/core": "^8.8||^9.0",
         "drush/drush": "~9.0||~10.0",
         "webflo/drupal-finder": "^1.0.0",
         "wikimedia/composer-merge-plugin": "^1.4",
@@ -99,6 +104,7 @@
     "replace": {
         "drupal/thunder_admin": "*",
         "drupal/paragraphs_features": "*",
+        "drupal/paragraphs_paste": "*",
         "drupal/select2": "*",
         "drupal/custom_list": "*",
         "drupal/riddle_marketplace": "*",
@@ -153,6 +159,7 @@
             "thunder/thunder-distribution": "dev-8.x-4.x",
             "drupal/thunder_admin": "dev-8.x-3.x",
             "drupal/paragraphs_features": "dev-8.x-1.x",
+            "drupal/paragraphs_paste": "dev-8.x-1.x",
             "drupal/select2": "dev-8.x-1.x",
             "drupal/custom_list": "dev-8.x-1.x",
             "drupal/riddle_marketplace": "dev-8.x-3.x",
