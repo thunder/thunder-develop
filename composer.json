@@ -96,7 +96,8 @@
         "webflo/drupal-finder": "^1.0.0",
         "wikimedia/composer-merge-plugin": "^1.4",
         "burdamagazinorg/image-derive-all": "dev-master",
-        "zaporylie/composer-drupal-optimizations": "^1.1"
+        "zaporylie/composer-drupal-optimizations": "^1.1",
+        "oomphinc/composer-installers-extender": "^1.1||^2.0"
     },
     "require-dev": {
         "drupal/core-dev": "^8.8||^9.0"
