@@ -7,6 +7,7 @@ namespace ThunderDevelop\composer;
 
 use Composer\Composer;
 use Composer\Package\PackageInterface;
+use Composer\Repository\VcsRepository;
 use Composer\Script\Event;
 
 use DrupalFinder\DrupalFinder;
@@ -32,7 +33,7 @@ class ScriptHandler {
 
         if (!$fs->exists($installPath)) {
           $repository = $package->getRepository();
-          if ($gitDriver = $repository->getDriver()) {
+          if ($repository instanceof VcsRepository && $gitDriver = $repository->getDriver()) {
             $gitDriver = $repository->getDriver();
             $repositoryUrl = $gitDriver->getUrl();
             $branchOption = (0 === strpos($packageVersion, 'dev-')) ? '-b ' . substr($packageVersion, strlen('dev-')) . ' ' : '';
@@ -105,7 +106,7 @@ class ScriptHandler {
       }
 
       $repository = $package->getRepository();
-      if ($gitDriver = $repository->getDriver()) {
+      if ($repository instanceof VcsRepository && $gitDriver = $repository->getDriver()) {
         $info = [];
         $info['package'] = $packageString;
         $info['install_path'] = self::getInstallPath($package, $composer);
