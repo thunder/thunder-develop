@@ -24,18 +24,18 @@ class ScriptHandler {
     $rootPackage = $composer->getPackage();
 
     $rootExtra = $rootPackage->getExtra();
-    $packages = $rootExtra['local-develop-packages'];
+    $localPackages = $rootExtra['local-develop-packages'];
 
-    foreach ($packages as $packageString => $packageVersion) {
-      $package = $repositoryManager->findPackage($packageString, $packageVersion);
-      if ($package) {
+    foreach ($localPackages as $packageString => $packageVersion) {
+      $packages = $repositoryManager->findPackages($packageString, $packageVersion);
+
+      foreach ($packages as $package) {
         $installPath = self::getInstallPath($package, $composer);
 
         if (!$fs->exists($installPath)) {
           $repository = $package->getRepository();
-          if ($repository instanceof VcsRepository && $gitDriver = $repository->getDriver()) {
-            $gitDriver = $repository->getDriver();
-            $repositoryUrl = $gitDriver->getUrl();
+          if ($repository instanceof VcsRepository) {
+            $repositoryUrl = $repository->getDriver()->getUrl();
             $branchOption = (0 === strpos($packageVersion, 'dev-')) ? '-b ' . substr($packageVersion, strlen('dev-')) . ' ' : '';
             exec('git clone  ' . $branchOption . $repositoryUrl . ' ' . $installPath);
             $io->write('Cloning repository: ' . $packageString);
@@ -100,19 +100,18 @@ class ScriptHandler {
     $packages = $rootExtra['local-develop-packages'];
 
     foreach ($packages as $packageString => $packageVersion) {
-      $package = $composer->getRepositoryManager()->findPackage($packageString, $packageVersion);
-      if (!$package) {
-        continue;
-      }
+      $packages = $composer->getRepositoryManager()->findPackages($packageString, $packageVersion);
 
-      $repository = $package->getRepository();
-      if ($repository instanceof VcsRepository && $gitDriver = $repository->getDriver()) {
-        $info = [];
-        $info['package'] = $packageString;
-        $info['install_path'] = self::getInstallPath($package, $composer);
-        $info['url'] = $gitDriver->getUrl();
-        $info['branch'] = (0 === strpos($packageVersion, 'dev-')) ? substr($packageVersion, strlen('dev-')) : '';
-        $repositoriesInfo[] = $info;
+      foreach ($packages as $package) {
+        $repository = $package->getRepository();
+        if ($repository instanceof VcsRepository) {
+          $info = [];
+          $info['package'] = $packageString;
+          $info['install_path'] = self::getInstallPath($package, $composer);
+          $info['url'] = $repository->getDriver()->getUrl();
+          $info['branch'] = (FALSE !== strpos($packageVersion, '-dev')) ? str_replace('-dev', '', $packageVersion) : '';
+          $repositoriesInfo[] = $info;
+        }
       }
     }
     return $repositoriesInfo;
