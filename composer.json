@@ -157,7 +157,7 @@
         },
         "local-develop-packages": {
             "thunder/thunder-distribution": "dev-6.0.x",
-            "drupal/thunder_admin": "dev-8.x-4.x",
+            "drupal/thunder_admin": "dev-4.x",
             "drupal/paragraphs_features": "dev-8.x-1.x",
             "drupal/paragraphs_paste": "dev-8.x-1.x",
             "drupal/select2": "dev-8.x-1.x",

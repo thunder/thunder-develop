@@ -33,7 +33,7 @@ class ScriptHandler {
 
         if (!$fs->exists($installPath)) {
           $repository = $package->getRepository();
-          if ($gitDriver = $repository->getDriver()) {
+          if ($repository instanceof VcsRepository && $gitDriver = $repository->getDriver()) {
             $gitDriver = $repository->getDriver();
             $repositoryUrl = $gitDriver->getUrl();
             $branchOption = (0 === strpos($packageVersion, 'dev-')) ? '-b ' . substr($packageVersion, strlen('dev-')) . ' ' : '';
