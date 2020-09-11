@@ -101,9 +101,9 @@ class ScriptHandler {
     $repositoriesInfo = [];
     $composer = $event->getComposer();
     $rootExtra = $composer->getPackage()->getExtra();
-    $packages = $rootExtra['local-develop-packages'];
+    $localPackages = $rootExtra['local-develop-packages'];
 
-    foreach ($packages as $packageString => $packageVersion) {
+    foreach ($localPackages as $packageString => $packageVersion) {
       $packages = $composer->getRepositoryManager()
         ->findPackages($packageString, $packageVersion . '-dev');
 
