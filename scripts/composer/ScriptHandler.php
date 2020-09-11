@@ -1,20 +1,25 @@
 <?php
-/**
- * @file
- * Contains \DrupalProject\composer\ScriptHandler.
- */
+
 namespace ThunderDevelop\composer;
 
 use Composer\Composer;
 use Composer\Package\PackageInterface;
 use Composer\Repository\VcsRepository;
 use Composer\Script\Event;
-
 use DrupalFinder\DrupalFinder;
 use Symfony\Component\Filesystem\Filesystem;
 
+/**
+ * Class ScriptHandler.
+ */
 class ScriptHandler {
 
+  /**
+   * Download dev packages before composer update.
+   *
+   * @param \Composer\Script\Event $event
+   *   The composer event.
+   */
   public static function downloadDevelopPackages(Event $event) {
     $fs = new Filesystem();
 
@@ -24,20 +29,19 @@ class ScriptHandler {
     $rootPackage = $composer->getPackage();
 
     $rootExtra = $rootPackage->getExtra();
-    $packages = $rootExtra['local-develop-packages'];
+    $localPackages = $rootExtra['local-develop-packages'];
 
-    foreach ($packages as $packageString => $packageVersion) {
-      $package = $repositoryManager->findPackage($packageString, $packageVersion);
-      if ($package) {
+    foreach ($localPackages as $packageString => $packageVersion) {
+      $packages = $repositoryManager->findPackages($packageString, $packageVersion . '-dev');
+
+      foreach ($packages as $package) {
         $installPath = self::getInstallPath($package, $composer);
 
         if (!$fs->exists($installPath)) {
           $repository = $package->getRepository();
-          if ($repository instanceof VcsRepository && $gitDriver = $repository->getDriver()) {
-            $gitDriver = $repository->getDriver();
-            $repositoryUrl = $gitDriver->getUrl();
-            $branchOption = (0 === strpos($packageVersion, 'dev-')) ? '-b ' . substr($packageVersion, strlen('dev-')) . ' ' : '';
-            exec('git clone  ' . $branchOption . $repositoryUrl . ' ' . $installPath);
+          if ($repository instanceof VcsRepository) {
+            $repositoryUrl = $repository->getDriver()->getUrl();
+            exec(sprintf("git clone -b %s %s %s", $packageVersion, $repositoryUrl, $installPath));
             $io->write('Cloning repository: ' . $packageString);
           }
         }
@@ -97,22 +101,22 @@ class ScriptHandler {
     $repositoriesInfo = [];
     $composer = $event->getComposer();
     $rootExtra = $composer->getPackage()->getExtra();
-    $packages = $rootExtra['local-develop-packages'];
+    $localPackages = $rootExtra['local-develop-packages'];
 
-    foreach ($packages as $packageString => $packageVersion) {
-      $package = $composer->getRepositoryManager()->findPackage($packageString, $packageVersion);
-      if (!$package) {
-        continue;
-      }
+    foreach ($localPackages as $packageString => $packageVersion) {
+      $packages = $composer->getRepositoryManager()
+        ->findPackages($packageString, $packageVersion . '-dev');
 
-      $repository = $package->getRepository();
-      if ($repository instanceof VcsRepository && $gitDriver = $repository->getDriver()) {
-        $info = [];
-        $info['package'] = $packageString;
-        $info['install_path'] = self::getInstallPath($package, $composer);
-        $info['url'] = $gitDriver->getUrl();
-        $info['branch'] = (0 === strpos($packageVersion, 'dev-')) ? substr($packageVersion, strlen('dev-')) : '';
-        $repositoriesInfo[] = $info;
+      foreach ($packages as $package) {
+        $repository = $package->getRepository();
+        if ($repository instanceof VcsRepository) {
+          $info = [];
+          $info['package'] = $packageString;
+          $info['install_path'] = self::getInstallPath($package, $composer);
+          $info['url'] = $repository->getDriver()->getUrl();
+          $info['branch'] = $packageVersion;
+          $repositoriesInfo[] = $info;
+        }
       }
     }
     return $repositoriesInfo;
@@ -122,17 +126,21 @@ class ScriptHandler {
    * Return the install path based on package type.
    *
    * @param \Composer\Package\PackageInterface $package
+   *   The package to get the path for.
    * @param \Composer\Composer $composer
+   *   The composer obbject.
    *
    * @return bool|string
+   *   The installer path or FALSE if not found.
    */
   protected static function getInstallPath(PackageInterface $package, Composer $composer) {
     $type = $package->getType();
 
     $prettyName = $package->getPrettyName();
-    if (strpos($prettyName, '/') !== false) {
-      list($vendor, $name) = explode('/', $prettyName);
-    } else {
+    if (strpos($prettyName, '/') !== FALSE) {
+      [$vendor, $name] = explode('/', $prettyName);
+    }
+    else {
       $vendor = '';
       $name = $prettyName;
     }
@@ -148,24 +156,29 @@ class ScriptHandler {
       $extra = $composer->getPackage()->getExtra();
       if (!empty($extra['installer-paths'])) {
         $customPath = self::mapCustomInstallPaths($extra['installer-paths'], $prettyName, $type, $vendor);
-        if ($customPath !== false) {
+        if ($customPath !== FALSE) {
           return self::templatePath($customPath, $availableVars);
         }
       }
     }
 
-    return false;
+    return FALSE;
   }
-
 
   /**
    * Search through a passed paths array for a custom install path.
    *
-   * @param  array  $paths
-   * @param  string $name
-   * @param  string $type
-   * @param  string $vendor = NULL
+   * @param array[] $paths
+   *   An array of paths.
+   * @param string $name
+   *   The package to search for.
+   * @param string $type
+   *   The type of the package.
+   * @param string|null $vendor
+   *   The vendor type.
+   *
    * @return string
+   *   The custom installer path.
    */
   protected static function mapCustomInstallPaths(array $paths, $name, $type, $vendor = NULL) {
     foreach ($paths as $path => $names) {
@@ -174,18 +187,21 @@ class ScriptHandler {
       }
     }
 
-    return false;
+    return FALSE;
   }
 
   /**
    * Replace vars in a path.
    *
-   * @param  string $path
-   * @param  array  $vars
+   * @param string $path
+   *   The path.
+   * @param array $vars
+   *   The vars.
+   *
    * @return string
    */
-  protected static function templatePath($path, array $vars = array()) {
-    if (strpos($path, '{') !== false) {
+  protected static function templatePath($path, array $vars = []) {
+    if (strpos($path, '{') !== FALSE) {
       extract($vars);
       preg_match_all('@\{\$([A-Za-z0-9_]*)\}@i', $path, $matches);
       if (!empty($matches[1])) {
