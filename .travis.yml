@@ -1,7 +1,10 @@
+dist: xenial
 language: php
-dist: trusty
 sudo: false
-php: 7.2
+php: 7.3
+
+services:
+  - mysql
 
 cache:
   apt: true
@@ -16,11 +19,6 @@ env:
 branches:
   only:
     - 3.x
-
-mysql:
-  database: thunder
-  username: root
-  encoding: utf8
 
 before_install:
   - source ./scripts/travis/01-setup-environment.sh
