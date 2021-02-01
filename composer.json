@@ -85,6 +85,10 @@
         "paragraphs_paste": {
             "type": "git",
             "url": "git@github.com:thunder/paragraphs_paste.git"
+        },
+        "composer-merge-plugin": {
+            "type": "vcs",
+            "url": "https://github.com/mcaskill/composer-merge-plugin"
         }
     },
     "require": {
@@ -94,9 +98,8 @@
         "drupal/core": "^8.8||^9.0",
         "drush/drush": "~9.0||~10.0",
         "webflo/drupal-finder": "^1.0.0",
-        "wikimedia/composer-merge-plugin": "^1.4",
+        "wikimedia/composer-merge-plugin": "dev-feature/composer-v2 as 1.5.0",
         "burdamagazinorg/image-derive-all": "dev-master",
-        "zaporylie/composer-drupal-optimizations": "^1.1",
         "oomphinc/composer-installers-extender": "^1.1||^2.0"
     },
     "require-dev": {
