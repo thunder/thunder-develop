@@ -25,5 +25,4 @@ before_install:
 
 script:
 # Installing thunder is the actual test
-  - composer self-update --1
   - bash -x -e ./scripts/travis/02-install-thunder.sh
