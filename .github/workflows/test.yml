@@ -22,7 +22,6 @@ jobs:
           coverage: none
           php-version: '7.4'
           extensions: Imagick
-          tools: composer:v1
 
       - name: Start MySql service
         run: |
