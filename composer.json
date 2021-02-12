@@ -85,10 +85,6 @@
         "paragraphs_paste": {
             "type": "git",
             "url": "git@github.com:thunder/paragraphs_paste.git"
-        },
-        "composer-merge-plugin": {
-            "type": "vcs",
-            "url": "https://github.com/mcaskill/composer-merge-plugin"
         }
     },
     "require": {
