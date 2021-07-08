@@ -46,17 +46,9 @@
             "type": "git",
             "url": "git@github.com:thunder/paragraphs_features.git"
         },
-        "custom_list": {
-            "type": "git",
-            "url": "git@github.com:thunder/custom_list.git"
-        },
         "select2": {
             "type": "git",
             "url": "git@github.com:thunder/select2.git"
-        },
-        "riddle": {
-            "type": "git",
-            "url": "git@github.com:BurdaMagazinOrg/module-riddle_marketplace.git"
         },
         "ivw": {
             "type": "git",
@@ -107,8 +99,6 @@
         "drupal/paragraphs_features": "*",
         "drupal/paragraphs_paste": "*",
         "drupal/select2": "*",
-        "drupal/custom_list": "*",
-        "drupal/riddle_marketplace": "*",
         "drupal/ivw_integration": "*",
         "drupal/update_helper": "*",
         "thunder/sampler": "*",
@@ -157,13 +147,11 @@
             "merge-extra-deep": true
         },
         "local-develop-packages": {
-            "thunder/thunder-distribution": "6.1.x",
+            "thunder/thunder-distribution": "6.2.x",
             "drupal/thunder_admin": "4.x",
             "drupal/paragraphs_features": "8.x-1.x",
             "drupal/paragraphs_paste": "8.x-1.x",
             "drupal/select2": "8.x-1.x",
-            "drupal/custom_list": "8.x-1.x",
-            "drupal/riddle_marketplace": "8.x-3.x",
             "drupal/ivw_integration": "8.x-2.x",
             "drupal/update_helper": "2.x",
             "thunder/sampler": "master",
