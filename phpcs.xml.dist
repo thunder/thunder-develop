@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ruleset name="nocake">
-  <description>PHP CodeSniffer configuration for nocake.</description>
+  <description>PHP CodeSniffer configuration for thunder.</description>
   <file>docroot/profiles/contrib/thunder</file>
   <arg name="extensions" value="php,module,inc,install,test,profile,theme,css,info,txt"/>
   <config name="drupal_core_version" value="9"/>
