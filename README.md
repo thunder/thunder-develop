@@ -3,43 +3,36 @@ To install the Thunder Distribution for development create the thunder-develop p
 
     composer create-project thunder/thunder-develop -s dev
     cd thunder-develop
-    
-This will install thunder into the docroot folder. The actual 
+
+This will install thunder into the docroot folder. The actual
 distribution repository will be cloned into docroot/profiles/contrib/thunder.
 
 If the docroot folder does not contain the index.php execute the drupal-scaffold composer command
 
     composer drupal-scaffold
-    
-Now you can install thunder. Point the web server to the docroot directory and do a normal site install. 
+
+Now you can install thunder. Point the web server to the docroot directory and do a normal site install.
 
 To work on the distribution, work inside the docroot/profiles/contrib/thunder
-folder. 
+folder.
 
     cd docroot/profiles/contrib/thunder
     git checkout -b feature/new-thunder-feature # <-- this will be a branch in the distribution not the project
     <make changes>
     git commit .
-    
 
-# Install development environment
-Install lando and its requirements: https://docs.devwithlando.io/
-then call:
+# Run code style tests
 
-    lando start
+To test the code style (Drupal and DrupalPractice) in the distribution run
 
-This will install appropriate docker containers. Now you can access your installation at http://thunder.lndo.site/
-To use composer within the container call:
+    composer cs
 
-    lando composer 
+To test some module run
 
-To use drush call:
+    composer cs docroot/modules/contrib/select2
 
-    lando drush 
-    
-You can use drush to install thunder:
+You can also run phpcbf
 
-    lando drush si thunder --db-url=mysql://drupal8:drupal8@database/drupal8 
-    
-By default, xdebug is disabled, you can change that in tha .lando.yml file by setting "xdebug: false".
-The .lando.yml file can be used to customize your environment, see: https://docs.devwithlando.io/tutorials/drupal8.html
+    composer cbf
+
+
