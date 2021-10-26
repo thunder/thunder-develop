@@ -12,6 +12,7 @@ services:
     image: app-web-${ENVIRONMENT}
     volumes:
       - ./:/opt/app
+      - test-fixtures:/opt/app/docroot/profiles/contrib/thunder/tests/fixtures
     ports:
       - '8080:80'
   php:
@@ -35,11 +36,13 @@ services:
       MYSQL_PASSWORD: ${DATABASE_PASSWORD}
     ports:
       - '3306:3306'
-  migrate:
-    image: mariadb
-    environment:
-      MARIADB_RANDOM_ROOT_PASSWORD: "true"
-      MYSQL_ROOT_HOST: ${DATABASE_HOST}
-      MYSQL_DATABASE: migrate_${DATABASE_NAME}
-      MYSQL_USER: ${DATABASE_USER}
-      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+  selenium:
+    image: selenium/standalone-chrome-debug:latest
+    ports:
+      - 5901:5900
+      - 4444:4444
+    volumes:
+      - test-fixtures:/project/tests/fixtures
+    shm_size: '2gb'
+volumes:
+  test-fixtures:
