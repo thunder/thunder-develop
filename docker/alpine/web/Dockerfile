@@ -11,4 +11,4 @@ RUN set -eux; \
     addgroup --gid ${DOCKER_GROUP_ID} nginx; \
     adduser --disabled-password --gecos '' --uid ${DOCKER_USER_ID} -G nginx nginx
 
-WORKDIR /opt/app
+WORKDIR /opt/project

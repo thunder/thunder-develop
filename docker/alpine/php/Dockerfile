@@ -68,14 +68,14 @@ RUN set -eux; \
     )"; \
     apk add --no-network --virtual .drupal-phpexts-rundeps $runDeps; \
     apk del --no-network .build-deps; \
-    apk add --no-cache git bash jq rsync patch mariadb-client
+    apk add --no-cache git bash jq rsync patch mariadb-client zip unzip php-zip openssh-client; \
+    mkdir /opt/drupal-testing; composer global require --no-cache --working-dir /opt/drupal-testing thunder/drupal-testing:dev-simplify
 
-RUN mkdir /opt/drupal-testing; composer global require --no-cache --working-dir /opt/drupal-testing thunder/drupal-testing:dev-simplify;
 
 COPY docker/config/php/custom.ini /usr/local/etc/php/conf.d/
 COPY docker/config/php/opcache-${ENVIRONMENT}.ini /usr/local/etc/php/conf.d/opcache.ini
 
-ENV PATH=/opt/app/vendor/bin:/opt/drupal-testing/vendor/bin:${PATH}
+ENV PATH=/opt/project/vendor/bin:/opt/drupal-testing/vendor/bin:${PATH}
 ENV DRUPAL_TESTING_COMPOSER_PROJECT=${DRUPAL_TESTING_COMPOSER_PROJECT}
 ENV DRUPAL_TESTING_DATABASE_USER=${DRUPAL_TESTING_DATABASE_USER}
 ENV DRUPAL_TESTING_DATABASE_PASSWORD=${DRUPAL_TESTING_DATABASE_PASSWORD}
@@ -96,4 +96,4 @@ ENV PHPSTAN_MEMORY_LIMIT=${PHPSTAN_MEMORY_LIMIT}
 ENV SIMPLETEST_BASE_URL=${SIMPLETEST_BASE_URL}
 
 USER www-data
-WORKDIR /opt/app
+WORKDIR /opt/project
