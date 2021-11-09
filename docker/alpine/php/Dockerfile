@@ -1,4 +1,4 @@
-FROM php:8.0-fpm-alpine as phpFpm
+FROM php:8.1.0RC5-fpm-alpine as phpFpm
 ARG DOCKER_USER_ID
 ARG DOCKER_GROUP_ID
 ARG ENVIRONMENT
@@ -91,7 +91,7 @@ RUN set -eux; \
 
 COPY docker/config/php/custom.ini /usr/local/etc/php/conf.d/
 COPY docker/config/php/opcache-${ENVIRONMENT}.ini /usr/local/etc/php/conf.d/opcache.ini
-COPY docker/config/php/fpm-pool.conf /usr/local/etc/php-fpm.d/www.conf
+COPY docker/config/php/fpm-pool.conf /usr/local/etc/php-fpm.d/zz-docker.conf
 COPY docker/config/web/nginx.conf /etc/nginx/nginx.conf
 COPY docker/config/web/default.conf /etc/nginx/http.d/default.conf
 COPY docker/config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf

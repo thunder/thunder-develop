@@ -28,10 +28,10 @@ services:
         DRUPAL_TESTING_PARALLEL_TESTING: 0
         SIMPLETEST_BASE_URL: http://web:80
     image: app-web-${ENVIRONMENT}
-    volumes:
-      - ./:/opt/project
     ports:
       - '8080:80'
+    volumes:
+      - ./:/opt/project
   database:
     image: mariadb
     environment:
