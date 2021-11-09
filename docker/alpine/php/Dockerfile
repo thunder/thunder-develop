@@ -92,8 +92,8 @@ RUN set -eux; \
 COPY docker/config/php/custom.ini /usr/local/etc/php/conf.d/
 COPY docker/config/php/opcache-${ENVIRONMENT}.ini /usr/local/etc/php/conf.d/opcache.ini
 COPY docker/config/php/fpm-pool.conf /usr/local/etc/php-fpm.d/zz-docker.conf
-COPY docker/config/web/nginx.conf /etc/nginx/nginx.conf
-COPY docker/config/web/default.conf /etc/nginx/http.d/default.conf
+COPY docker/config/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY docker/config/nginx/default.conf /etc/nginx/http.d/default.conf
 COPY docker/config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 ENV PATH=/opt/project/vendor/bin:/opt/drupal-testing/vendor/bin:${PATH}
