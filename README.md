@@ -27,3 +27,17 @@ prevent user access problems to created files and folders make sure to use your 
 To spin up the environment run
 
     docker-compose up -d
+
+# Run code style tests
+
+To test the code style (Drupal and DrupalPractice) in the distribution run
+
+    composer cs
+
+To test some module run
+
+    composer cs docroot/modules/contrib/select2
+
+You can also run phpcbf
+
+    composer cbf

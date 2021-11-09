@@ -117,6 +117,8 @@
         "files": ["load.environment.php"]
     },
     "scripts": {
+        "cs": "phpcs",
+        "cbf": "phpcbf",
         "reset-repositories": "ThunderDevelop\\composer\\ScriptHandler::resetLocalRepositories",
         "pre-update-cmd": [
             "ThunderDevelop\\composer\\ScriptHandler::downloadDevelopPackages"
