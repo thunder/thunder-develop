@@ -1,4 +1,4 @@
-FROM php:8.1.0RC5-fpm-alpine as phpFpm
+FROM php:8.0-fpm-alpine as phpFpm
 ARG DOCKER_USER_ID
 ARG DOCKER_GROUP_ID
 ARG ENVIRONMENT
@@ -89,12 +89,12 @@ RUN set -eux; \
     chown -R www-data.www-data /var/lib/nginx; \
     chown -R www-data.www-data /var/log/nginx
 
-COPY docker/config/php/custom.ini /usr/local/etc/php/conf.d/
-COPY docker/config/php/opcache-${ENVIRONMENT}.ini /usr/local/etc/php/conf.d/opcache.ini
-COPY docker/config/php/fpm-pool.conf /usr/local/etc/php-fpm.d/zz-docker.conf
-COPY docker/config/nginx/nginx.conf /etc/nginx/nginx.conf
-COPY docker/config/nginx/default.conf /etc/nginx/http.d/default.conf
-COPY docker/config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY docker/web/config/php/custom.ini /usr/local/etc/php/conf.d/
+COPY docker/web/config/php/opcache-${ENVIRONMENT}.ini /usr/local/etc/php/conf.d/opcache.ini
+COPY docker/web/config/php/fpm-pool.conf /usr/local/etc/php-fpm.d/zz-docker.conf
+COPY docker/web/config/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY docker/web/config/nginx/default.conf /etc/nginx/http.d/default.conf
+COPY docker/web/config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 ENV PATH=/opt/project/vendor/bin:/opt/drupal-testing/vendor/bin:${PATH}
 ENV DRUPAL_TESTING_COMPOSER_PROJECT=${DRUPAL_TESTING_COMPOSER_PROJECT}
