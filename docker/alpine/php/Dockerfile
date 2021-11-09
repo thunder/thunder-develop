@@ -94,6 +94,7 @@ COPY docker/config/php/opcache-${ENVIRONMENT}.ini /usr/local/etc/php/conf.d/opca
 COPY docker/config/php/fpm-pool.conf /usr/local/etc/php-fpm.d/www.conf
 COPY docker/config/web/nginx.conf /etc/nginx/nginx.conf
 COPY docker/config/web/default.conf /etc/nginx/http.d/default.conf
+COPY docker/config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 ENV PATH=/opt/project/vendor/bin:/opt/drupal-testing/vendor/bin:${PATH}
 ENV DRUPAL_TESTING_COMPOSER_PROJECT=${DRUPAL_TESTING_COMPOSER_PROJECT}

@@ -4,19 +4,6 @@ services:
   web:
     build:
       context: .
-      dockerfile: docker/alpine/web/Dockerfile
-      args:
-        DOCKER_USER_ID: ${DOCKER_USER_ID}
-        DOCKER_GROUP_ID: ${DOCKER_GROUP_ID}
-        ENVIRONMENT: ${ENVIRONMENT}
-    image: app-web-${ENVIRONMENT}
-    volumes:
-      - ./:/opt/project
-    ports:
-      - '8080:80'
-  php:
-    build:
-      context: .
       dockerfile: docker/alpine/php/Dockerfile
       args:
         DOCKER_USER_ID: ${DOCKER_USER_ID}
@@ -40,9 +27,11 @@ services:
         PHPSTAN_MEMORY_LIMIT: 4G
         DRUPAL_TESTING_PARALLEL_TESTING: 0
         SIMPLETEST_BASE_URL: http://web:80
-    image: app-php-${ENVIRONMENT}
+    image: app-web-${ENVIRONMENT}
     volumes:
       - ./:/opt/project
+    ports:
+      - '8080:80'
   database:
     image: mariadb
     environment:
