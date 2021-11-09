@@ -68,12 +68,32 @@ RUN set -eux; \
     )"; \
     apk add --no-network --virtual .drupal-phpexts-rundeps $runDeps; \
     apk del --no-network .build-deps; \
-    apk add --no-cache git bash jq rsync patch mariadb-client zip unzip php-zip openssh-client; \
-    mkdir /opt/drupal-testing; composer global require --no-cache --working-dir /opt/drupal-testing thunder/drupal-testing:dev-simplify
-
+    apk add --no-cache \
+      nginx \
+      git \
+      bash \
+      jq \
+      rsync \
+      patch \
+      mariadb-client \
+      zip \
+      unzip \
+      php-zip \
+      openssh-client \
+      supervisor; \
+    mkdir /opt/project; \
+    mkdir /opt/drupal-testing; \
+    composer global require --no-cache --working-dir /opt/drupal-testing thunder/drupal-testing:dev-simplify; \
+    chown -R www-data.www-data /opt/project; \
+    chown -R www-data.www-data /run; \
+    chown -R www-data.www-data /var/lib/nginx; \
+    chown -R www-data.www-data /var/log/nginx
 
 COPY docker/config/php/custom.ini /usr/local/etc/php/conf.d/
 COPY docker/config/php/opcache-${ENVIRONMENT}.ini /usr/local/etc/php/conf.d/opcache.ini
+COPY docker/config/php/fpm-pool.conf /usr/local/etc/php-fpm.d/www.conf
+COPY docker/config/web/nginx.conf /etc/nginx/nginx.conf
+COPY docker/config/web/default.conf /etc/nginx/http.d/default.conf
 
 ENV PATH=/opt/project/vendor/bin:/opt/drupal-testing/vendor/bin:${PATH}
 ENV DRUPAL_TESTING_COMPOSER_PROJECT=${DRUPAL_TESTING_COMPOSER_PROJECT}
@@ -97,3 +117,7 @@ ENV SIMPLETEST_BASE_URL=${SIMPLETEST_BASE_URL}
 
 USER www-data
 WORKDIR /opt/project
+
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+
+HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1:8080/fpm-ping
