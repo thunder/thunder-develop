@@ -27,11 +27,9 @@ services:
         PHPSTAN_MEMORY_LIMIT: 4G
         DRUPAL_TESTING_PARALLEL_TESTING: 0
         SIMPLETEST_BASE_URL: http://web:80
-    image: app-web-${ENVIRONMENT}
+    image: app-web-outside
     ports:
       - '8080:80'
-    volumes:
-      - ./:/opt/project
   database:
     image: mariadb
     environment:

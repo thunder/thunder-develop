@@ -1,0 +1,7 @@
+version: '3.8'
+
+services:
+  web:
+    image: app-web-outside
+    volumes:
+      - ./:/opt/project

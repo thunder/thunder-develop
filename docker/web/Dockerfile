@@ -1,4 +1,5 @@
-FROM php:8.0-fpm-alpine as phpFpm
+FROM php:8.0-fpm-alpine
+
 ARG DOCKER_USER_ID
 ARG DOCKER_GROUP_ID
 ARG ENVIRONMENT

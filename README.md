@@ -24,6 +24,20 @@ folder.
 To use the provided docker compose setup copy .env.example to .env and change the file settings to your liking. To
 prevent user access problems to created files and folders make sure to use your user id (call id --user) and group id
 (id --group) for DOCKER_USER_ID and DOCKER_GROUP_ID.
+
+We provide different docker compose layouts. one has the project files inside the container, the other one mounts
+the local files into the container. The configuration with the files outside of the container is preferred for
+development.
+Before running docker-compose up, you have to decide which one to use by either running
+
+    # All files are copied into the container and cannot be modified outside of it.
+    docker-compose -f docker-compose.base.yml -f docker-compose.inside.yml config > docker-compose.yml
+
+or
+
+    # All files are mounted into the container an can be modified outside of the container
+    docker-compose -f docker-compose.base.yml -f docker-compose.outside.yml config > docker-compose.yml
+
 To spin up the environment run
 
     docker-compose up -d

@@ -1,0 +1,2 @@
+FROM app-web-outside
+COPY --chown=www-data:www-data ./ /opt/project
