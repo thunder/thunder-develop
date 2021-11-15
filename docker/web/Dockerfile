@@ -45,8 +45,10 @@ RUN set -eux; \
     ; \
     \
     pecl install imagick;  \
+    pecl install xdebug;  \
     \
     docker-php-ext-enable imagick; \
+    docker-php-ext-enable xdebug; \
     docker-php-ext-configure gd \
       --with-freetype \
       --with-jpeg=/usr/include \
@@ -91,6 +93,7 @@ RUN set -eux; \
     chown -R www-data.www-data /var/log/nginx
 
 COPY docker/web/config/php/custom.ini /usr/local/etc/php/conf.d/
+COPY docker/web/config/php/xdebug.ini /usr/local/etc/php/conf.d/
 COPY docker/web/config/php/opcache-${ENVIRONMENT}.ini /usr/local/etc/php/conf.d/opcache.ini
 COPY docker/web/config/php/fpm-pool.conf /usr/local/etc/php-fpm.d/zz-docker.conf
 COPY docker/web/config/nginx/nginx.conf /etc/nginx/nginx.conf
