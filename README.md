@@ -42,6 +42,8 @@ To spin up the environment run
 
     docker-compose up -d
 
+To visit the page call http://localhost:8080 in your browser, or https://localhost:8081 for ssl encryption.
+
 Enable php debug
 
     docker-compose exec web enable_xdebug
