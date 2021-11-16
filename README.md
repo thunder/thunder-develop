@@ -42,6 +42,14 @@ To spin up the environment run
 
     docker-compose up -d
 
+Enable php debug
+
+    docker-compose exec web enable_xdebug
+
+Disable php debug
+
+    docker-compose exec web disable_xdebug
+
 # Run code style tests
 
 To test the code style (Drupal and DrupalPractice) in the distribution run

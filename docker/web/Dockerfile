@@ -48,7 +48,6 @@ RUN set -eux; \
     pecl install xdebug;  \
     \
     docker-php-ext-enable imagick; \
-    docker-php-ext-enable xdebug; \
     docker-php-ext-configure gd \
       --with-freetype \
       --with-jpeg=/usr/include \
@@ -83,6 +82,7 @@ RUN set -eux; \
       unzip \
       php-zip \
       openssh-client \
+      php-common \
       supervisor; \
     mkdir /opt/project; \
     mkdir /opt/drupal-testing; \
@@ -90,15 +90,19 @@ RUN set -eux; \
     chown -R www-data.www-data /opt/project; \
     chown -R www-data.www-data /run; \
     chown -R www-data.www-data /var/lib/nginx; \
-    chown -R www-data.www-data /var/log/nginx
+    chown -R www-data.www-data /var/log/nginx; \
+    chown -R www-data.www-data /usr/local/etc/php/conf.d
 
-COPY docker/web/config/php/custom.ini /usr/local/etc/php/conf.d/
-COPY docker/web/config/php/xdebug.ini /usr/local/etc/php/conf.d/
-COPY docker/web/config/php/opcache-${ENVIRONMENT}.ini /usr/local/etc/php/conf.d/opcache.ini
-COPY docker/web/config/php/fpm-pool.conf /usr/local/etc/php-fpm.d/zz-docker.conf
-COPY docker/web/config/nginx/nginx.conf /etc/nginx/nginx.conf
-COPY docker/web/config/nginx/default.conf /etc/nginx/http.d/default.conf
-COPY docker/web/config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY --chown=www-data:www-data docker/web/config/php/custom.ini /usr/local/etc/php/conf.d/
+COPY --chown=www-data:www-data docker/web/config/php/xdebug.ini /usr/local/etc/php/conf.d/
+COPY --chown=www-data:www-data docker/web/config/php/opcache-${ENVIRONMENT}.ini /usr/local/etc/php/conf.d/opcache.ini
+COPY --chown=www-data:www-data docker/web/config/php/fpm-pool.conf /usr/local/etc/php-fpm.d/zz-docker.conf
+COPY --chown=www-data:www-data docker/web/config/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY --chown=www-data:www-data docker/web/config/nginx/default.conf /etc/nginx/http.d/default.conf
+COPY --chown=www-data:www-data docker/web/config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY --chown=www-data:www-data docker/certs/ssl.crt /etc/nginx/certs/ssl.crt
+COPY --chown=www-data:www-data docker/certs/ssl.key /etc/nginx/certs/ssl.key
+COPY --chown=www-data:www-data docker/web/bin/* /usr/local/bin
 
 ENV PATH=/opt/project/vendor/bin:/opt/drupal-testing/vendor/bin:${PATH}
 ENV DRUPAL_TESTING_COMPOSER_PROJECT=${DRUPAL_TESTING_COMPOSER_PROJECT}
