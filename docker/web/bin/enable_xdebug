@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+sed -i "s/^;zend_extension=xdebug/zend_extension=xdebug/g" /usr/local/etc/php/conf.d/xdebug.ini
+killall -USR2 php-fpm 2>/dev/null || true
+echo "Enabled xdebug"
