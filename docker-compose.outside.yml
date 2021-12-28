@@ -5,3 +5,6 @@ services:
     image: app-web-outside
     volumes:
       - ./:/opt/project
+      - $SSH_AUTH_SOCK:/ssh-agent
+    environment:
+      SSH_AUTH_SOCK: /ssh-agent
