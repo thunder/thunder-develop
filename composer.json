@@ -95,7 +95,8 @@
     "require-dev": {
         "drupal/core-dev": "^9.2",
         "drupal/config_profile": "^1.0",
-        "phpspec/prophecy-phpunit": "^2"
+        "phpspec/prophecy-phpunit": "^2",
+        "brianium/paratest": "^6.3"
     },
     "replace": {
         "drupal/thunder_admin": "*",
@@ -168,6 +169,14 @@
         "enable-patching": true
     },
     "config": {
-        "process-timeout": 2000
+        "process-timeout": 2000,
+        "allow-plugins": {
+            "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "drupal/core-composer-scaffold": true,
+            "oomphinc/composer-installers-extender": true,
+            "wikimedia/composer-merge-plugin": true
+        }
     }
 }
