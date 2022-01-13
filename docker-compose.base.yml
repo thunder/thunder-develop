@@ -51,5 +51,5 @@ services:
       - 5901:5900
       - 4444:4444
     volumes:
-      - ./docroot/profiles/contrib/thunder/tests/fixtures:/fixtures:r
+      - ./docroot/profiles/contrib/thunder/tests/fixtures:/fixtures:ro
     shm_size: '2gb'
