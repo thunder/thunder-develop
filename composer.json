@@ -93,7 +93,8 @@
     "require-dev": {
         "drupal/core-dev": "^9.2",
         "drupal/config_profile": "^1.0",
-        "phpspec/prophecy-phpunit": "^2"
+        "phpspec/prophecy-phpunit": "^2",
+        "rector/rector": "^0.12.13"
     },
     "replace": {
         "drupal/thunder_admin": "*",
