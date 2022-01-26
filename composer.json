@@ -84,7 +84,7 @@
         "cweagans/composer-patches": "^1.6.5",
         "drupal/core-composer-scaffold": "^9.2",
         "drupal/core": "^9.2",
-        "drush/drush": "~10.0",
+        "drush/drush": "~11.0",
         "webflo/drupal-finder": "^1.0.0",
         "wikimedia/composer-merge-plugin": "dev-master",
         "burdamagazinorg/image-derive-all": "dev-master",
@@ -166,6 +166,13 @@
         "enable-patching": true
     },
     "config": {
-        "process-timeout": 2000
+        "process-timeout": 2000,
+        "allow-plugins": {
+            "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "drupal/core-composer-scaffold": true,
+            "oomphinc/composer-installers-extender": true,
+            "wikimedia/composer-merge-plugin": true
+        }
     }
 }
