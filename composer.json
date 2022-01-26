@@ -94,6 +94,7 @@
         "drupal/core-dev": "^9.2",
         "drupal/config_profile": "^1.0",
         "phpspec/prophecy-phpunit": "^2",
+        "rector/rector": "^0.12.13",
         "brianium/paratest": "^6.3"
     },
     "replace": {
@@ -151,7 +152,7 @@
             "merge-extra-deep": true
         },
         "local-develop-packages": {
-            "thunder/thunder-distribution": "6.2.x",
+            "thunder/thunder-distribution": "6.3.x",
             "drupal/thunder_admin": "4.x",
             "drupal/paragraphs_features": "8.x-1.x",
             "drupal/paragraphs_paste": "8.x-1.x",
