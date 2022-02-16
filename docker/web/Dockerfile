@@ -84,7 +84,7 @@ COPY --chown=www-data:www-data docker/web/config/nginx/default.conf /etc/nginx/h
 COPY --chown=www-data:www-data docker/web/config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY --chown=www-data:www-data docker/certs/ssl.crt /etc/nginx/certs/ssl.crt
 COPY --chown=www-data:www-data docker/certs/ssl.key /etc/nginx/certs/ssl.key
-COPY --chown=www-data:www-data docker/web/bin/* /usr/local/bin
+COPY --chown=www-data:www-data docker/web/bin/* /usr/local/bin/
 
 ENV PATH=/opt/project/vendor/bin:/opt/drupal-testing/vendor/bin:${PATH}
 
