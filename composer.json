@@ -56,7 +56,7 @@
         },
         "update_helper": {
             "type": "git",
-            "url": "git@github.com:BurdaMagazinOrg/module-update_helper.git"
+            "url": "git@git.drupal.org:project/update_helper.git"
         },
         "sampler": {
             "type": "git",
@@ -158,7 +158,7 @@
             "drupal/paragraphs_paste": "8.x-1.x",
             "drupal/select2": "8.x-1.x",
             "drupal/ivw_integration": "8.x-2.x",
-            "drupal/update_helper": "2.x",
+            "drupal/update_helper": "3.x",
             "thunder/sampler": "master",
             "thunder/thunder_performance_measurement": "master",
             "thunder/testsite_builder": "master",
