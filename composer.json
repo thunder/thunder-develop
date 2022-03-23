@@ -76,7 +76,7 @@
         },
         "paragraphs_paste": {
             "type": "git",
-            "url": "git@github.com:thunder/paragraphs_paste.git"
+            "url": "git@git.drupal.org:project/paragraphs_paste.git"
         }
     },
     "require": {
@@ -157,7 +157,7 @@
             "thunder/thunder-distribution": "6.3.x",
             "drupal/thunder_admin": "4.x",
             "drupal/paragraphs_features": "8.x-1.x",
-            "drupal/paragraphs_paste": "8.x-1.x",
+            "drupal/paragraphs_paste": "2.x",
             "drupal/select2": "8.x-1.x",
             "drupal/ivw_integration": "8.x-2.x",
             "drupal/update_helper": "3.0.x",
