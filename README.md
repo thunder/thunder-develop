@@ -31,12 +31,12 @@ development.
 Before running docker-compose up, you have to decide which one to use by either running
 
     # All files are copied into the container and cannot be modified outside of it.
-    docker-compose -f docker-compose.base.yml -f docker-compose.inside.yml config > docker-compose.yml
+    docker compose -f docker-compose.base.yml -f docker-compose.inside.yml config > docker-compose.yml
 
 or
 
     # All files are mounted into the container an can be modified outside of the container
-    docker-compose -f docker-compose.base.yml -f docker-compose.outside.yml config > docker-compose.yml
+    docker compose -f docker-compose.base.yml -f docker-compose.outside.yml config > docker-compose.yml
 
 To spin up the environment run
 

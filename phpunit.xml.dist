@@ -30,7 +30,7 @@
     <!-- Example SIMPLETEST_BASE_URL value: http://localhost -->
     <env name="SIMPLETEST_BASE_URL" value="http://web"/>
     <!-- Example SIMPLETEST_DB value: mysql://username:password@localhost/databasename#table_prefix -->
-    <env name="SIMPLETEST_DB" value="mysql://thunder:thunder@database/thunder_develop"/>
+    <env name="SIMPLETEST_DB" value="mysql://db:db@database/db"/>
     <!-- Example BROWSERTEST_OUTPUT_DIRECTORY value: /path/to/webroot/sites/simpletest/browser_output -->
     <env name="BROWSERTEST_OUTPUT_DIRECTORY" value=""/>
     <!-- To have browsertest output use an alternative base URL. For example if
