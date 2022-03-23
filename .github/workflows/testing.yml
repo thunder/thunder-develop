@@ -40,7 +40,7 @@ jobs:
           composer config repositories.thunder git https://github.com/thunder/thunder-distribution.git
           composer config repositories.admin git https://github.com/BurdaMagazinOrg/theme-thunder-admin.git
           composer config repositories.paragraphs_features git https://github.com/thunder/paragraphs_features.git
-          composer config repositories.paragraphs_paste git https://github.com/thunder/paragraphs_paste.git
+          composer config repositories.paragraphs_paste git https://git.drupalcode.org/project/paragraphs_paste.git
           composer config repositories.select2 git https://github.com/thunder/select2.git
           composer config repositories.ivw git https://github.com/BurdaMagazinOrg/module-ivw_integration.git
           composer config repositories.update_helper git https://git.drupalcode.org/project/update_helper.git
