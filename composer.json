@@ -161,7 +161,7 @@
             "thunder/sampler": "master",
             "thunder/thunder_performance_measurement": "master",
             "thunder/testsite_builder": "master",
-            "thunder/thunder_testing_demo": "3.x"
+            "thunder/thunder_testing_demo": "4.x"
         },
         "enable-patching": true
     },
