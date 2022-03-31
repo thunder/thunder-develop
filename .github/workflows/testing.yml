@@ -6,7 +6,7 @@ on:
       - 3.x
 
   schedule:
-    - cron:  '0 7 * * *'
+    - cron: '0 7 * * *'
 
 jobs:
 
@@ -42,7 +42,7 @@ jobs:
           composer config repositories.paragraphs_features git https://github.com/thunder/paragraphs_features.git
           composer config repositories.paragraphs_paste git https://git.drupalcode.org/project/paragraphs_paste.git
           composer config repositories.select2 git https://github.com/thunder/select2.git
-          composer config repositories.ivw git https://github.com/BurdaMagazinOrg/module-ivw_integration.git
+          composer config repositories.ivw git https://git.drupalcode.org/project/ivw_integration.git
           composer config repositories.update_helper git https://git.drupalcode.org/project/update_helper.git
           composer config repositories.sampler git https://github.com/thunder/sampler.git
           composer config repositories.thunder_performance_measurement git https://github.com/thunder/thunder_performance_measurement.git
