@@ -88,7 +88,8 @@
         "webflo/drupal-finder": "^1.0.0",
         "wikimedia/composer-merge-plugin": "dev-master",
         "burdamagazinorg/image-derive-all": "dev-master",
-        "oomphinc/composer-installers-extender": "^1.1||^2.0"
+        "oomphinc/composer-installers-extender": "^1.1||^2.0",
+        "netcarver/textile": "^3.7"
     },
     "require-dev": {
         "drupal/core-dev": "^9.2",
