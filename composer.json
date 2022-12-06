@@ -13,10 +13,6 @@
             "email": "christian.fritsch@burda.com"
         },
         {
-            "name": "Mladen Todorovic",
-            "email": "mladen.todorovic@burda.com"
-        },
-        {
             "name": "Volker Killesreiter",
             "email": "killesreiter@burda.com"
         },
@@ -58,18 +54,6 @@
             "type": "git",
             "url": "git@git.drupal.org:project/update_helper.git"
         },
-        "sampler": {
-            "type": "git",
-            "url": "git@github.com:thunder/sampler.git"
-        },
-        "thunder_performance_measurement": {
-            "type": "git",
-            "url": "git@github.com:thunder/thunder_performance_measurement.git"
-        },
-        "testsite_builder": {
-            "type": "git",
-            "url": "git@github.com:thunder/testsite_builder.git"
-        },
         "thunder_testing_demo": {
             "type": "git",
             "url": "git@github.com:thunder/thunder_testing_demo.git"
@@ -82,8 +66,7 @@
     "require": {
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6.5",
-        "drupal/core-composer-scaffold": "^9.2",
-        "drupal/core": "^9.2",
+        "drupal/core-composer-scaffold": "^9 || ^10",
         "drush/drush": "~11.0",
         "webflo/drupal-finder": "^1.0.0",
         "wikimedia/composer-merge-plugin": "dev-master",
@@ -92,8 +75,7 @@
         "netcarver/textile": "^3.7"
     },
     "require-dev": {
-        "drupal/core-dev": "^9.2",
-        "drupal/config_profile": "^1.0",
+        "drupal/core-dev": "^9 || ^10",
         "phpspec/prophecy-phpunit": "^2",
         "brianium/paratest": "^6.3"
     },
@@ -104,9 +86,6 @@
         "drupal/select2": "*",
         "drupal/ivw_integration": "*",
         "drupal/update_helper": "*",
-        "thunder/sampler": "*",
-        "thunder/thunder_performance_measurement": "*",
-        "thunder/testsite_builder": "*",
         "thunder/thunder_testing_demo": "*"
     },
     "minimum-stability": "dev",
@@ -159,9 +138,6 @@
             "drupal/select2": "8.x-1.x",
             "drupal/ivw_integration": "8.x-2.x",
             "drupal/update_helper": "3.0.x",
-            "thunder/sampler": "master",
-            "thunder/thunder_performance_measurement": "master",
-            "thunder/testsite_builder": "master",
             "thunder/thunder_testing_demo": "4.x"
         },
         "enable-patching": true
@@ -174,7 +150,8 @@
             "drupal/core-composer-scaffold": true,
             "oomphinc/composer-installers-extender": true,
             "wikimedia/composer-merge-plugin": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "phpstan/extension-installer": true
         }
     }
 }
