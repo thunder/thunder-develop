@@ -48,7 +48,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer install
+          composer require drupal/core:^9.4.0
 
       - name: Install Thunder
         run: |

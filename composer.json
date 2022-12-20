@@ -44,7 +44,7 @@
         },
         "select2": {
             "type": "git",
-            "url": "git@github.com:thunder/select2.git"
+            "url": "git@git.drupal.org:project/select2.git"
         },
         "ivw": {
             "type": "git",
