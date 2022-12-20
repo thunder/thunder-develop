@@ -72,7 +72,8 @@
         "webflo/drupal-finder": "^1.0.0",
         "wikimedia/composer-merge-plugin": "dev-master",
         "burdamagazinorg/image-derive-all": "dev-master",
-        "oomphinc/composer-installers-extender": "^1.1||^2.0"
+        "oomphinc/composer-installers-extender": "^1.1||^2.0",
+        "netcarver/textile": "^3.7"
     },
     "require-dev": {
         "drupal/core-dev": "^9.2",
@@ -145,7 +146,7 @@
             "merge-extra-deep": true
         },
         "local-develop-packages": {
-            "thunder/thunder-distribution": "6.3.x",
+            "thunder/thunder-distribution": "6.4.x",
             "drupal/thunder_admin": "4.x",
             "drupal/paragraphs_features": "8.x-1.x",
             "drupal/paragraphs_paste": "2.x",
