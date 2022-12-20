@@ -13,10 +13,6 @@
             "email": "christian.fritsch@burda.com"
         },
         {
-            "name": "Mladen Todorovic",
-            "email": "mladen.todorovic@burda.com"
-        },
-        {
             "name": "Volker Killesreiter",
             "email": "killesreiter@burda.com"
         },
@@ -52,23 +48,11 @@
         },
         "ivw": {
             "type": "git",
-            "url": "git@github.com:BurdaMagazinOrg/module-ivw_integration.git"
+            "url": "git@git.drupal.org:project/ivw_integration.git"
         },
         "update_helper": {
             "type": "git",
             "url": "git@git.drupal.org:project/update_helper.git"
-        },
-        "sampler": {
-            "type": "git",
-            "url": "git@github.com:thunder/sampler.git"
-        },
-        "thunder_performance_measurement": {
-            "type": "git",
-            "url": "git@github.com:thunder/thunder_performance_measurement.git"
-        },
-        "testsite_builder": {
-            "type": "git",
-            "url": "git@github.com:thunder/testsite_builder.git"
         },
         "thunder_testing_demo": {
             "type": "git",
@@ -104,9 +88,6 @@
         "drupal/select2": "*",
         "drupal/ivw_integration": "*",
         "drupal/update_helper": "*",
-        "thunder/sampler": "*",
-        "thunder/thunder_performance_measurement": "*",
-        "thunder/testsite_builder": "*",
         "thunder/thunder_testing_demo": "*"
     },
     "minimum-stability": "dev",
@@ -130,18 +111,31 @@
                 "web-root": "docroot/"
             }
         },
-        "installer-types": ["bower-asset", "npm-asset"],
+        "installer-types": [
+            "bower-asset",
+            "npm-asset"
+        ],
         "installer-paths": {
-            "docroot/core": ["type:drupal-core"],
+            "docroot/core": [
+                "type:drupal-core"
+            ],
             "docroot/libraries/{$name}": [
                 "type:drupal-library",
                 "type:bower-asset",
                 "type:npm-asset"
             ],
-            "docroot/modules/contrib/{$name}": ["type:drupal-module"],
-            "docroot/profiles/contrib/{$name}": ["type:drupal-profile"],
-            "docroot/themes/contrib/{$name}": ["type:drupal-theme"],
-            "drush/contrib/{$name}": ["type:drupal-drush"]
+            "docroot/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "docroot/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "docroot/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "drush/contrib/{$name}": [
+                "type:drupal-drush"
+            ]
         },
         "merge-plugin": {
             "include": [
@@ -159,9 +153,6 @@
             "drupal/select2": "8.x-1.x",
             "drupal/ivw_integration": "8.x-2.x",
             "drupal/update_helper": "3.0.x",
-            "thunder/sampler": "master",
-            "thunder/thunder_performance_measurement": "master",
-            "thunder/testsite_builder": "master",
             "thunder/thunder_testing_demo": "4.x"
         },
         "enable-patching": true
