@@ -44,7 +44,7 @@
         },
         "select2": {
             "type": "git",
-            "url": "git@github.com:thunder/select2.git"
+            "url": "git@git.drupal.org:project/select2.git"
         },
         "ivw": {
             "type": "git",
@@ -66,8 +66,8 @@
     "require": {
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6.5",
-        "drupal/core-composer-scaffold": "^9.2",
-        "drupal/core": "^9.2",
+        "drupal/core": "^9 || ^10",
+        "drupal/core-composer-scaffold": "^9 || ^10",
         "drush/drush": "~11.0",
         "webflo/drupal-finder": "^1.0.0",
         "wikimedia/composer-merge-plugin": "dev-master",
@@ -76,8 +76,7 @@
         "netcarver/textile": "^3.7"
     },
     "require-dev": {
-        "drupal/core-dev": "^9.2",
-        "drupal/config_profile": "^1.0",
+        "drupal/core-dev": "^9 || ^10",
         "phpspec/prophecy-phpunit": "^2",
         "brianium/paratest": "^6.3"
     },
@@ -165,7 +164,8 @@
             "drupal/core-composer-scaffold": true,
             "oomphinc/composer-installers-extender": true,
             "wikimedia/composer-merge-plugin": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "phpstan/extension-installer": true
         }
     }
 }
