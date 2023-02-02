@@ -44,11 +44,11 @@
         },
         "select2": {
             "type": "git",
-            "url": "git@github.com:thunder/select2.git"
+            "url": "git@git.drupal.org:project/select2.git"
         },
         "ivw": {
             "type": "git",
-            "url": "git@github.com:BurdaMagazinOrg/module-ivw_integration.git"
+            "url": "git@git.drupal.org:project/ivw_integration.git"
         },
         "update_helper": {
             "type": "git",
@@ -66,6 +66,7 @@
     "require": {
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6.5",
+        "drupal/core": "^9 || ^10",
         "drupal/core-composer-scaffold": "^9 || ^10",
         "drush/drush": "~11.0",
         "webflo/drupal-finder": "^1.0.0",
@@ -113,18 +114,31 @@
                 "web-root": "docroot/"
             }
         },
-        "installer-types": ["bower-asset", "npm-asset"],
+        "installer-types": [
+            "bower-asset",
+            "npm-asset"
+        ],
         "installer-paths": {
-            "docroot/core": ["type:drupal-core"],
+            "docroot/core": [
+                "type:drupal-core"
+            ],
             "docroot/libraries/{$name}": [
                 "type:drupal-library",
                 "type:bower-asset",
                 "type:npm-asset"
             ],
-            "docroot/modules/contrib/{$name}": ["type:drupal-module"],
-            "docroot/profiles/contrib/{$name}": ["type:drupal-profile"],
-            "docroot/themes/contrib/{$name}": ["type:drupal-theme"],
-            "drush/contrib/{$name}": ["type:drupal-drush"]
+            "docroot/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "docroot/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "docroot/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "drush/contrib/{$name}": [
+                "type:drupal-drush"
+            ]
         },
         "merge-plugin": {
             "include": [
