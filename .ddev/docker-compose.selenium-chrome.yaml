@@ -1,0 +1,16 @@
+#ddev-generated
+version: '3.6'
+services:
+  chrome:
+    # Use debug image when needed.
+    # image: selenium/standalone-chrome-debug:latest
+    image: selenium/standalone-chrome:latest
+    container_name: ddev-${DDEV_SITENAME}-chrome
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: ${DDEV_APPROOT}
+    ports:
+      #- "4444:4444"
+      - "6001:5900" # Additional port for debug.
+    volumes:
+      - /dev/shm:/dev/shm

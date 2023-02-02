@@ -35,4 +35,8 @@ You can also run phpcbf
 
     composer cbf
 
+# Testing
 
+Create test dump file
+
+    ddev exec -d /var/www/html/docroot php core/scripts/db-tools.php dump-database-d8-mysql > docroot/test-database-dump.php
