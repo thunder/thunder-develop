@@ -40,3 +40,19 @@ You can also run phpcbf
 Create test dump file
 
     ddev exec -d /var/www/html/docroot php core/scripts/db-tools.php dump-database-d8-mysql > docroot/test-database-dump.php
+
+Run all Thunder tests
+
+    ddev composer exec -- phpunit docroot/profiles/contrib/thunder
+
+Run single test file (e.g. CacheInvalidationTest.php)
+
+    ddev composer exec -- phpunit --filter=CacheInvalidationTest docroot/profiles/contrib/thunder
+
+Run single test method (e.g. CacheInvalidationTest::testMetatagsCacheInvalidation)
+
+    ddev composer exec -- phpunit --filter=CacheInvalidationTest::testMetatagsCacheInvalidation::testMetatagsCacheInvalidation docroot/profiles/contrib/thunder
+
+Run module tests
+
+    ddev composer exec -- phpunit docroot/modules/contrib/graphql
