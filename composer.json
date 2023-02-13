@@ -61,6 +61,19 @@
         "paragraphs_paste": {
             "type": "git",
             "url": "git@git.drupal.org:project/paragraphs_paste.git"
+        },
+        "config_profile": {
+            "type": "package",
+            "package": {
+                "type": "drupal-module",
+                "name": "drupal/my_config_profile",
+                "version": "1.0",
+                "source": {
+                    "url": "https://git.drupalcode.org/project/config_profile.git",
+                    "type": "git",
+                    "reference": "8.x-1.x"
+                }
+            }
         }
     },
     "require": {
@@ -73,7 +86,9 @@
         "wikimedia/composer-merge-plugin": "dev-master",
         "burdamagazinorg/image-derive-all": "dev-master",
         "oomphinc/composer-installers-extender": "^1.1||^2.0",
-        "netcarver/textile": "^3.7"
+        "netcarver/textile": "^3.7",
+        "drupal/my_config_profile": "^1.0",
+        "drupal/config_filter": "^1.0"
     },
     "require-dev": {
         "drupal/core-dev": "^9 || ^10",
@@ -154,8 +169,13 @@
             "drupal/update_helper": "3.0.x",
             "thunder/thunder_testing_demo": "4.x"
         },
-        "enable-patching": true
-    },
+        "enable-patching": true,
+        "patches": {
+            "drupal/my_config_profile": {
+                "Automated Drupal 10 compatibility fixes": "https://www.drupal.org/files/issues/2022-07-18/config_profile.1.x-dev.rector.patch"
+            }
+        }
+                },
     "config": {
         "process-timeout": 2000,
         "allow-plugins": {
