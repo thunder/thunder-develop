@@ -7,6 +7,6 @@
   <!-- If you have Coder installed locally then you can reference the Drupal
   standards with relative paths. Otherwise simply use "Drupal" and
   "DrupalPractice. -->
-  <rule ref="Drupal"/>
+  <rule ref="docroot/core/phpcs.xml.dist"/>
   <rule ref="DrupalPractice"/>
 </ruleset>
