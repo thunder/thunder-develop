@@ -44,10 +44,6 @@ You can also run phpcbf
 
 # Testing
 
-Create test dump file
-
-    ddev exec -d /var/www/html/docroot php core/scripts/db-tools.php dump-database-d8-mysql > docroot/test-database-dump.php
-
 Some tests need test fixtures inside the selenium container. To copy the current fixtures run:
 
     docker cp docroot/profiles/contrib/thunder/tests/fixtures ddev-thunder-develop-selenium-chrome:/fixtures
