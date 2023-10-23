@@ -43,16 +43,19 @@ Create test dump file
 
 Run all Thunder tests
 
-    ddev composer exec -- phpunit docroot/profiles/contrib/thunder
+    ddev composer exec -- phpunit -c docroot/core docroot/profiles/contrib/thunder
 
 Run single test file (e.g. CacheInvalidationTest.php)
 
-    ddev composer exec -- phpunit --filter=CacheInvalidationTest docroot/profiles/contrib/thunder
+    ddev composer exec -- phpunit -c docroot/core --filter=CacheInvalidationTest docroot/profiles/contrib/thunder
 
 Run single test method (e.g. CacheInvalidationTest::testMetatagsCacheInvalidation)
 
-    ddev composer exec -- phpunit --filter=CacheInvalidationTest::testMetatagsCacheInvalidation::testMetatagsCacheInvalidation docroot/profiles/contrib/thunder
+    ddev composer exec -- phpunit -c docroot/core --filter=testEntityListCacheInvalidation docroot/profiles/contrib/thunder/modules
 
 Run module tests
 
-    ddev composer exec -- phpunit docroot/modules/contrib/graphql
+    ddev composer exec -- phpunit -c docroot/core docroot/modules/contrib/graphql
+
+
+ddev exec -d /var/www/html/docroot "../vendor/bin/phpunit -v -c ./core/phpunit.xml.dist ./core/modules/system/tests/src/FunctionalJavascript/FrameworkTest.php"
