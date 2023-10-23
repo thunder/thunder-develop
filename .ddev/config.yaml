@@ -11,8 +11,12 @@ database:
     version: "10.4"
 use_dns_when_possible: true
 composer_version: "2"
-disable_settings_management: true
-web_environment: []
+web_environment:
+    - DRUSH_OPTIONS_URI=https://thunder-develop.ddev.site/
+    - SIMPLETEST_DB="mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@${MYSQL_HOST}:3306/${MYSQL_DATABASE}"
+    - SIMPLETEST_BASE_URL="http://web"
+    - MINK_DRIVER_ARGS_WEBDRIVER=[\"chrome\", {\"browserName\":\"chrome\",\"chromeOptions\":{\"w3c\":false,\"args\":[\"--disable-gpu\",\"--no-sandbox\", \"--disable-dev-shm-usage\", \"--window-size=1920,1080\"]}}, \"http://selenium-chrome:4444/wd/hub\"]
+
 nodejs_version: "18"
 
 # Key features of DDEV's config.yaml:
@@ -261,7 +265,7 @@ nodejs_version: "18"
 # See https://ddev.readthedocs.io/en/stable/users/extend/custom-commands/ for more
 # information on the commands that can be extended and the tasks you can define
 # for them. Example:
-#hooks:
-# post-import-db:
-#   - exec: drush cr
-#   - exec: drush updb
+hooks:
+ post-start:
+   - exec: composer install
+   - exec-host: docker cp docroot/profiles/contrib/thunder/tests/fixtures ddev-thunder-develop-selenium-chrome:/fixtures

@@ -2,7 +2,7 @@
 drush/contrib
 vendor
 bin
-docroot
+docroot/
 
 # Ignore Drupal's file directory
 private/*
