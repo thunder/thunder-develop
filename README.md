@@ -12,9 +12,11 @@ Start the ddev environment for local site install:
 
     ddev start
 
-Install the site:
+Install the site. When composer update was never run, it has to be called twice, because of the composer merge plugin
+which is used to merge the distributions dependencies. This is not necesseary when the docroot was build before.:
 
-    ddev composer install
+    ddev composer update
+    ddev composer update
     ddev drush si thunder
 
 To work on the distribution, work inside the docroot/profiles/contrib/thunder
@@ -54,7 +56,7 @@ Run all Thunder tests
 
     ddev composer exec -- phpunit -c docroot/core docroot/profiles/contrib/thunder
 
-Run single test file (e.g. CacheInvalidationTest.php)
+Run single test file (e.g. ArticleSchedulerIntegrationTest.php)
 
     ddev composer exec -- phpunit -c docroot/core --filter=ArticleSchedulerIntegrationTest docroot/profiles/contrib/thunder
 
