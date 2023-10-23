@@ -7,10 +7,6 @@ To install the Thunder Distribution for development create the thunder-develop p
 This will install thunder into the docroot folder. The actual
 distribution repository will be cloned into docroot/profiles/contrib/thunder.
 
-If the docroot folder does not contain the index.php execute the drupal-scaffold composer command
-
-    composer drupal-scaffold
-
 Now you can install thunder. Point the web server to the docroot directory and do a normal site install.
 
 To work on the distribution, work inside the docroot/profiles/contrib/thunder
@@ -25,15 +21,15 @@ folder.
 
 To test the code style (Drupal and DrupalPractice) in the distribution run
 
-    composer cs
+    ddev composer cs
 
 To test some module run
 
-    composer cs docroot/modules/contrib/select2
+    ddev composer cs docroot/modules/contrib/select2
 
 You can also run phpcbf
 
-    composer cbf
+    ddev composer cbf
 
 # Testing
 

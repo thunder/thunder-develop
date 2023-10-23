@@ -28,7 +28,6 @@ services:
       com.ddev.approot: $DDEV_APPROOT
     volumes:
       - ".:/mnt/ddev_config"
-      - "../docroot/profiles/contrib/thunder/tests/fixtures:/fixtures"
 
   web:
     links:
