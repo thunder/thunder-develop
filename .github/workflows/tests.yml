@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
 
       - uses: shivammathur/setup-php@v2
         with:
@@ -48,7 +48,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer require drupal/core:^9.4.0
+          composer update || composer update
 
       - name: Install Thunder
         run: |
