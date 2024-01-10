@@ -3,7 +3,7 @@
   <description>PHP CodeSniffer configuration for Thunder.</description>
   <file>docroot/profiles/contrib/thunder</file>
   <arg name="extensions" value="php,module,inc,install,test,profile,theme,css,info,txt"/>
-  <config name="drupal_core_version" value="9"/>
+  <config name="drupal_core_version" value="10"/>
   <!-- If you have Coder installed locally then you can reference the Drupal
   standards with relative paths. Otherwise simply use "Drupal" and
   "DrupalPractice. -->

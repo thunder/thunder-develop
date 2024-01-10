@@ -7,11 +7,17 @@ To install the Thunder Distribution for development create the thunder-develop p
 This will install thunder into the docroot folder. The actual
 distribution repository will be cloned into docroot/profiles/contrib/thunder.
 
-If the docroot folder does not contain the index.php execute the drupal-scaffold composer command
+## Ddev Environment
+Start the ddev environment for local site install:
 
-    composer drupal-scaffold
+    ddev start
 
-Now you can install thunder. Point the web server to the docroot directory and do a normal site install.
+Install the site. When composer update was never run, it has to be called twice, because of the composer merge plugin
+which is used to merge the distributions dependencies. This is not necesseary when the docroot was build before.:
+
+    ddev composer update
+    ddev composer update
+    ddev drush si thunder
 
 To work on the distribution, work inside the docroot/profiles/contrib/thunder
 folder.
@@ -21,18 +27,39 @@ folder.
     <make changes>
     git commit .
 
+
 # Run code style tests
 
 To test the code style (Drupal and DrupalPractice) in the distribution run
 
-    composer cs
+    ddev composer cs
 
 To test some module run
 
-    composer cs docroot/modules/contrib/select2
+    ddev composer cs docroot/modules/contrib/mymodule
 
 You can also run phpcbf
 
-    composer cbf
+    ddev composer cbf
 
+# Testing
 
+Some tests need test fixtures inside the selenium container. To copy the current fixtures run:
+
+    docker cp docroot/profiles/contrib/thunder/tests/fixtures ddev-thunder-develop-selenium-chrome:/fixtures
+
+Run all Thunder tests
+
+    ddev composer exec -- phpunit -c docroot/core docroot/profiles/contrib/thunder
+
+Run single test file (e.g. ArticleSchedulerIntegrationTest.php)
+
+    ddev composer exec -- phpunit -c docroot/core --filter=ArticleSchedulerIntegrationTest docroot/profiles/contrib/thunder
+
+Run single test method (e.g. CacheInvalidationTest::testMetatagsCacheInvalidation)
+
+    ddev composer exec -- phpunit -c docroot/core --filter=testEntityListCacheInvalidation docroot/profiles/contrib/thunder/modules
+
+Run module tests
+
+    ddev composer exec -- phpunit -c docroot/core docroot/modules/contrib/graphql
