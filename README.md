@@ -1,11 +1,8 @@
 # Thunder development installation
 To install the Thunder Distribution for development create the thunder-develop project:
 
-    composer create-project thunder/thunder-develop -s dev
+    composer create-project thunder/thunder-develop --keep-vcs --no-install -s dev
     cd thunder-develop
-
-This will install thunder into the docroot folder. The actual
-distribution repository will be cloned into docroot/profiles/contrib/thunder.
 
 ## Ddev Environment
 Start the ddev environment for local site install:
