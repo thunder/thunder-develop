@@ -109,6 +109,13 @@
         "drupal-scaffold": {
             "locations": {
                 "web-root": "docroot/"
+            },
+            "file-mapping": {
+                "[web-root]/sites/default/services.yml": {
+                    "mode": "replace",
+                    "path": "assets/services.yml",
+                    "overwrite": false
+                }
             }
         },
         "installer-types": [
