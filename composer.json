@@ -30,10 +30,6 @@
             "type": "composer",
             "url": "https://asset-packagist.org"
         },
-        "admin": {
-            "type": "git",
-            "url": "git@github.com:BurdaMagazinOrg/theme-thunder-admin.git"
-        },
         "thunder": {
             "type": "git",
             "url": "git@github.com:thunder/thunder-distribution.git"
@@ -83,7 +79,6 @@
         "drupal/ckeditor5_dev": "^1.0"
     },
     "replace": {
-        "drupal/thunder_admin": "*",
         "drupal/paragraphs_features": "*",
         "drupal/paragraphs_paste": "*",
         "drupal/select2": "*",
@@ -148,7 +143,6 @@
         },
         "local-develop-packages": {
             "thunder/thunder-distribution": "7.2.x",
-            "drupal/thunder_admin": "4.x",
             "drupal/paragraphs_features": "2.x",
             "drupal/paragraphs_paste": "2.x",
             "drupal/select2": "8.x-1.x",
