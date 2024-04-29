@@ -79,7 +79,8 @@
     "require-dev": {
         "drupal/core-dev": "^9 || ^10",
         "phpspec/prophecy-phpunit": "^2",
-        "brianium/paratest": "^6.3"
+        "brianium/paratest": "^6.3",
+        "drupal/ckeditor5_dev": "^1.0"
     },
     "replace": {
         "drupal/thunder_admin": "*",
@@ -146,13 +147,13 @@
             "merge-extra-deep": true
         },
         "local-develop-packages": {
-            "thunder/thunder-distribution": "7.1.x",
+            "thunder/thunder-distribution": "7.2.x",
             "drupal/thunder_admin": "4.x",
             "drupal/paragraphs_features": "2.x",
             "drupal/paragraphs_paste": "2.x",
             "drupal/select2": "8.x-1.x",
             "drupal/ivw_integration": "8.x-2.x",
-            "drupal/update_helper": "3.0.x",
+            "drupal/update_helper": "4.0.x",
             "thunder/thunder_testing_demo": "4.x"
         },
         "enable-patching": true
