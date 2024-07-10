@@ -1,7 +1,7 @@
 name: thunder-develop
 type: drupal
 docroot: docroot
-php_version: "8.1"
+php_version: "8.3"
 webserver_type: nginx-fpm
 xdebug_enabled: false
 additional_hostnames: []
@@ -11,8 +11,6 @@ database:
     version: "10.11"
 use_dns_when_possible: true
 composer_version: "2"
-web_environment:
-    - DRUSH_OPTIONS_URI=https://thunder-develop.ddev.site/
 nodejs_version: "18"
 
 # Key features of DDEV's config.yaml:
