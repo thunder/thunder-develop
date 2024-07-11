@@ -11,6 +11,8 @@ database:
     version: "10.11"
 use_dns_when_possible: true
 composer_version: "2"
+web_environment:
+  - thunderDumpFile=${DDEV_COMPOSER_ROOT}/${DDEV_DOCROOT}/test-database-dump.php
 nodejs_version: "18"
 
 # Key features of DDEV's config.yaml:
