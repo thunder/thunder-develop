@@ -70,7 +70,8 @@
         "burdamagazinorg/image-derive-all": "dev-master",
         "oomphinc/composer-installers-extender": "^1.1||^2.0",
         "netcarver/textile": "^3.7",
-        "drupal/config_profile": "^1.0"
+        "drupal/config_profile": "^1.0",
+        "drupal/default_content": "^2.0@alpha"
     },
     "require-dev": {
         "drupal/core-dev": "^9 || ^10",
