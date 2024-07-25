@@ -2,7 +2,7 @@ name: thunder-develop
 type: drupal
 docroot: docroot
 php_version: "8.3"
-webserver_type: nginx-fpm
+webserver_type: apache-fpm
 xdebug_enabled: false
 additional_hostnames: []
 additional_fqdns: []
@@ -12,8 +12,9 @@ database:
 use_dns_when_possible: true
 composer_version: "2"
 web_environment:
-  - thunderDumpFile=${DDEV_COMPOSER_ROOT}/${DDEV_DOCROOT}/test-database-dump.php
+    - thunderDumpFile=${DDEV_COMPOSER_ROOT}/${DDEV_DOCROOT}/test-database-dump.php
 nodejs_version: "18"
+corepack_enable: false
 
 # Key features of DDEV's config.yaml:
 
@@ -201,7 +202,7 @@ nodejs_version: "18"
 
 # disable_settings_management: false
 # If true, DDEV will not create CMS-specific settings files like
-# Drupal's settings.php/settings.ddev.php or TYPO3's additional.php
+# Drupal's settings.php/settings.ddev.php or TYPO3's AdditionalConfiguration.php
 # In this case the user must provide all such settings.
 
 # You can inject environment variables into the web container with:
@@ -279,6 +280,7 @@ nodejs_version: "18"
 # information on the commands that can be extended and the tasks you can define
 # for them. Example:
 #hooks:
-# post-start:
-#   - exec: composer install
-#   - exec-host: docker cp docroot/profiles/contrib/thunder/tests/fixtures ddev-thunder-develop-selenium-chrome:/fixtures
+# post-import-db:
+#   - exec: drush sql:sanitize
+#   - exec: drush updatedb
+#   - exec: drush cache:rebuild
