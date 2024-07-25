@@ -62,16 +62,17 @@
     "require": {
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6.5",
-        "drupal/core": "^9 || ^10",
-        "drupal/core-composer-scaffold": "^9 || ^10",
-        "drush/drush": "~11.0||~12.0",
+        "drupal/core": "^10 || ^11",
+        "drupal/core-composer-scaffold": "^10 || ^11",
+        "drush/drush": "~12.0||~13.0",
         "webflo/drupal-finder": "^1.0.0",
         "wikimedia/composer-merge-plugin": "dev-master",
         "burdamagazinorg/image-derive-all": "dev-master",
         "oomphinc/composer-installers-extender": "^1.1||^2.0",
         "netcarver/textile": "^3.7",
         "drupal/config_profile": "^1.0",
-        "drupal/default_content": "^2.0@alpha"
+        "drupal/default_content": "2.0.x-dev",
+        "mglaman/composer-drupal-lenient": "^1.0"
     },
     "require-dev": {
         "drupal/core-dev": "^9 || ^10",
@@ -172,7 +173,8 @@
             "wikimedia/composer-merge-plugin": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "phpstan/extension-installer": true,
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "mglaman/composer-drupal-lenient": true
         }
     }
 }
