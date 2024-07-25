@@ -8,19 +8,16 @@
 ## Flags: []
 ## AutocompleteTerms: ["on","off","enable","disable","toggle","status"]
 
-php_version=$(php --version | awk '/PHP/ {print $2}')
-php_version=$(echo "$php_version" | cut -d '.' -f 1,2)
-
 get_pcov_status() {
   php -r 'echo extension_loaded("pcov") ? "1" : "0";'
 }
 
 enable_pcov() {
-  phpenmod -v "$php_version" pcov
+  phpenmod -v "${DDEV_PHP_VERSION}" pcov
 }
 
 disable_pcov() {
-  phpdismod -v "$php_version" pcov
+  phpdismod -v "${DDEV_PHP_VERSION}" pcov
 }
 
 if [ $# -eq 0 ] ; then
