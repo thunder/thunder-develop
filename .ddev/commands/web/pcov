@@ -1,0 +1,58 @@
+#!/bin/bash
+
+## #ddev-generated
+## Description: Enable or disable pcov
+## Usage: pcov on|off|enable|disable|true|false|toggle|status
+## Example: "ddev pcov" (default is "on"), "ddev pcov off", "ddev pcov on", "ddev pcov toggle", "ddev pcov status"
+## ExecRaw: false
+## Flags: []
+## AutocompleteTerms: ["on","off","enable","disable","toggle","status"]
+
+php_version=$(php --version | awk '/PHP/ {print $2}')
+php_version=$(echo "$php_version" | cut -d '.' -f 1,2)
+
+get_pcov_status() {
+  php -r 'echo extension_loaded("pcov") ? "1" : "0";'
+}
+
+enable_pcov() {
+  phpenmod -v "$php_version" pcov
+}
+
+disable_pcov() {
+  phpdismod -v "$php_version" pcov
+}
+
+if [ $# -eq 0 ] ; then
+  enable_pcov
+  exit
+fi
+
+case $1 in
+  on|true|enable)
+    enable_pcov
+    ;;
+  off|false|disable)
+    disable_pcov
+    ;;
+  toggle)
+    status=$(get_pcov_status)
+    if [ "${status}" = "1" ]; then
+      disable_pcov
+    else
+      enable_pcov
+    fi
+    ;;
+  status)
+    status=$(get_pcov_status)
+    if [ "${status}" = "1" ]; then
+      result="pcov enabled"
+    else
+      result="pcov disabled"
+    fi
+    echo $result
+    ;;
+  *)
+    echo "Invalid argument: $1"
+    ;;
+esac

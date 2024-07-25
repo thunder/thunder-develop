@@ -5,5 +5,4 @@ RUN (apt-get update || true) && DEBIAN_FRONTEND=noninteractive apt-get install -
 # Install the extension
 RUN pecl install ${extension}
 RUN echo "extension=${extension}.so" > /etc/php/${DDEV_PHP_VERSION}/mods-available/${extension}.ini && chmod 666 /etc/php/${DDEV_PHP_VERSION}/mods-available/${extension}.ini
-# Enable the extension
-RUN phpenmod ${extension}
+
