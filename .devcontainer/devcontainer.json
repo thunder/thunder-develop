@@ -15,6 +15,7 @@
     },
     // Use 'postCreateCommand' to run commands after the container is created
     "postCreateCommand": "bash .devcontainer/scripts/postCreateCommand.sh",
+    "postStartCommand": "bash .devcontainer/scripts/postStartCommand.sh",
     // Configure tool-specific properties.
     "customizations": {
         // Configurations from https://www.drupal.org/docs/develop/development-tools/editors-and-ides/configuring-visual-studio-code
@@ -129,7 +130,11 @@
                         "database": "mariadb",
                         "username": "mariadb"
                     }
-                ]
+                ],
+                "phpunit.args": [
+                    "--configuration docroot/core/phpunit.xml.dist"
+                ],
+                "phpunit.phpunit": "vendor/bin/phpunit"
             }
         }
     },

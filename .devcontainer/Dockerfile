@@ -54,7 +54,7 @@ RUN set -eux; \
 
 # Install MariaDB client
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get install -y mariadb-client \
+    && apt-get install -y mariadb-client vim\
     && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 # set recommended PHP.ini settings
