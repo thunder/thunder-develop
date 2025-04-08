@@ -70,15 +70,13 @@
         "burdamagazinorg/image-derive-all": "dev-master",
         "oomphinc/composer-installers-extender": "^1.1||^2.0",
         "netcarver/textile": "^3.7",
-        "drupal/config_profile": "^1.0",
         "drupal/default_content": "2.0.x-dev",
         "mglaman/composer-drupal-lenient": "^1.0"
     },
     "require-dev": {
-        "drupal/core-dev": "^9 || ^10",
-        "phpspec/prophecy-phpunit": "^2",
-        "brianium/paratest": "^6.3",
-        "drupal/ckeditor5_dev": "^1.0"
+        "drupal/core-dev": "^10 || ^11",
+        "drupal/tour": "^2.0",
+        "phpspec/prophecy-phpunit": "^2"
     },
     "replace": {
         "drupal/paragraphs_features": "*",
@@ -153,10 +151,10 @@
             "merge-extra-deep": true
         },
         "local-develop-packages": {
-            "thunder/thunder-distribution": "7.2.x",
+            "thunder/thunder-distribution": "8.0.x",
             "drupal/paragraphs_features": "2.x",
             "drupal/paragraphs_paste": "2.x",
-            "drupal/select2": "8.x-1.x",
+            "drupal/select2": "2.x",
             "drupal/ivw_integration": "8.x-2.x",
             "drupal/update_helper": "4.0.x",
             "thunder/thunder_testing_demo": "4.x"
@@ -174,7 +172,8 @@
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "phpstan/extension-installer": true,
             "php-http/discovery": true,
-            "mglaman/composer-drupal-lenient": true
+            "mglaman/composer-drupal-lenient": true,
+            "tbachert/spi": true
         }
     }
 }
