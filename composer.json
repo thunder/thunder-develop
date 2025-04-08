@@ -70,15 +70,12 @@
         "burdamagazinorg/image-derive-all": "dev-master",
         "oomphinc/composer-installers-extender": "^1.1||^2.0",
         "netcarver/textile": "^3.7",
-        "drupal/config_profile": "^1.0",
         "drupal/default_content": "2.0.x-dev",
         "mglaman/composer-drupal-lenient": "^1.0"
     },
     "require-dev": {
-        "drupal/core-dev": "^9 || ^10",
-        "phpspec/prophecy-phpunit": "^2",
-        "brianium/paratest": "^6.3",
-        "drupal/ckeditor5_dev": "^1.0"
+        "drupal/core-dev": "^10 || ^11",
+        "phpspec/prophecy-phpunit": "^2"
     },
     "replace": {
         "drupal/paragraphs_features": "*",
@@ -174,7 +171,8 @@
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "phpstan/extension-installer": true,
             "php-http/discovery": true,
-            "mglaman/composer-drupal-lenient": true
+            "mglaman/composer-drupal-lenient": true,
+            "tbachert/spi": true
         }
     }
 }
