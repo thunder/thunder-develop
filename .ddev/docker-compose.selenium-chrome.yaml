@@ -4,10 +4,9 @@
 #
 # This file comes from https://github.com/ddev/ddev-selenium-standalone-chrome
 #
-version: '3.6'
 services:
   selenium-chrome:
-    image: seleniarm/standalone-chromium:latest
+    image: selenium/standalone-chromium:138.0
     container_name: ddev-${DDEV_SITENAME}-selenium-chrome
     expose:
       #      The internal noVNC port, which operates over HTTP so it can be exposed
@@ -17,8 +16,7 @@ services:
       - VIRTUAL_HOST=$DDEV_HOSTNAME
       - HTTPS_EXPOSE=7900:7900
       - HTTP_EXPOSE=7910:7900
-    external_links:
-      - ddev-router:${DDEV_SITENAME}.${DDEV_TLD}
+      - VNC_NO_PASSWORD=1
     # To enable VNC access for traditional VNC clients like macOS "Screen Sharing",
     # uncomment the following two lines.
     #ports:
@@ -27,6 +25,8 @@ services:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: $DDEV_APPROOT
     volumes:
+      # To enable file uploads in E2E tests.
+      - ${DDEV_APPROOT}:/var/www/html:r
       - ".:/mnt/ddev_config"
 
   web:

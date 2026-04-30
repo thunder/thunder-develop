@@ -146,7 +146,7 @@
             "merge-extra-deep": true
         },
         "local-develop-packages": {
-            "thunder/thunder-distribution": "8.0.x",
+            "thunder/thunder-distribution": "8.3.x",
             "drupal/paragraphs_features": "2.x",
             "drupal/select2": "2.x",
             "drupal/ivw_integration": "8.x-2.x",
