@@ -56,7 +56,7 @@
         }
     },
     "require": {
-        "composer/installers": "^1.2",
+        "composer/installers": "^2.3",
         "cweagans/composer-patches": "^1.6.5",
         "drupal/core": "^10 || ^11",
         "drupal/core-composer-scaffold": "^10 || ^11",
@@ -67,7 +67,8 @@
         "oomphinc/composer-installers-extender": "^1.1||^2.0",
         "netcarver/textile": "^3.7",
         "drupal/default_content": "2.0.x-dev",
-        "mglaman/composer-drupal-lenient": "^1.0"
+        "mglaman/composer-drupal-lenient": "^1.0",
+        "drupal/core-recipe-unpack": "^11.3"
     },
     "require-dev": {
         "drupal/core-dev": "^10 || ^11",
@@ -116,6 +117,9 @@
             "npm-asset"
         ],
         "installer-paths": {
+            "recipes/{$name}": [
+                "type:drupal-recipe"
+            ],
             "docroot/core": [
                 "type:drupal-core"
             ],
@@ -167,7 +171,8 @@
             "phpstan/extension-installer": true,
             "php-http/discovery": true,
             "mglaman/composer-drupal-lenient": true,
-            "tbachert/spi": true
+            "tbachert/spi": true,
+            "drupal/core-recipe-unpack": true
         }
     }
 }
