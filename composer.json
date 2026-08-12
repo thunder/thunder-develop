@@ -172,7 +172,8 @@
             "php-http/discovery": true,
             "mglaman/composer-drupal-lenient": true,
             "tbachert/spi": true,
-            "drupal/core-recipe-unpack": true
+            "drupal/core-recipe-unpack": true,
+            "symfony/runtime": true
         }
     }
 }
