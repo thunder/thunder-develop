@@ -16,3 +16,5 @@ composer.lock
 
 .editorconfig
 .gitattributes
+
+ .ddev/.env
