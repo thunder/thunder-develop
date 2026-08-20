@@ -38,9 +38,9 @@
             "type": "git",
             "url": "git@github.com:thunder/paragraphs_features.git"
         },
-        "select2": {
+        "ai_chatbot_assistant_ui": {
             "type": "git",
-            "url": "git@git.drupal.org:project/select2.git"
+            "url": "git@git.drupal.org:project/ai_chatbot_assistant_ui.git"
         },
         "ivw": {
             "type": "git",
@@ -68,7 +68,13 @@
         "netcarver/textile": "^3.7",
         "drupal/default_content": "2.0.x-dev",
         "mglaman/composer-drupal-lenient": "^1.0",
-        "drupal/core-recipe-unpack": "^11.3"
+        "drupal/core-recipe-unpack": "^11.3",
+        "drupal/thunder_ai": "^1.0",
+        "drupal/ai": "dev-1.5.x",
+        "drupal/tool_belt": "^1.0",
+        "drupal/ai_agents": "^1.0",
+        "drupal/mcp_client": "^1.0@alpha",
+        "drupal/ai_context": "^1.0@beta"
     },
     "require-dev": {
         "drupal/core-dev": "^10 || ^11",
@@ -77,7 +83,7 @@
     },
     "replace": {
         "drupal/paragraphs_features": "*",
-        "drupal/select2": "*",
+        "drupal/ai_chatbot_assistant_ui": "*",
         "drupal/ivw_integration": "*",
         "drupal/update_helper": "*",
         "thunder/thunder_testing_demo": "*",
@@ -152,7 +158,7 @@
         "local-develop-packages": {
             "thunder/thunder-distribution": "8.3.x",
             "drupal/paragraphs_features": "2.x",
-            "drupal/select2": "2.x",
+            "drupal/ai_chatbot_assistant_ui": "1.0.x",
             "drupal/ivw_integration": "8.x-2.x",
             "drupal/update_helper": "4.0.x",
             "thunder/thunder_testing_demo": "4.x"
@@ -160,6 +166,9 @@
         "enable-patching": true
     },
     "config": {
+        "audit": {
+            "block-insecure": false
+        },
         "process-timeout": 2000,
         "allow-plugins": {
             "composer/installers": true,
@@ -172,7 +181,8 @@
             "php-http/discovery": true,
             "mglaman/composer-drupal-lenient": true,
             "tbachert/spi": true,
-            "drupal/core-recipe-unpack": true
+            "drupal/core-recipe-unpack": true,
+            "symfony/runtime": true
         }
     }
 }
