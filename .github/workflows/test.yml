@@ -39,7 +39,6 @@ jobs:
         run: |
           composer config repositories.thunder git https://github.com/thunder/thunder-distribution.git
           composer config repositories.paragraphs_features git https://github.com/thunder/paragraphs_features.git
-          composer config repositories.select2 git https://git.drupalcode.org/project/select2.git
           composer config repositories.ivw git https://git.drupalcode.org/project/ivw_integration.git
           composer config repositories.update_helper git https://git.drupalcode.org/project/update_helper.git
           composer config repositories.thunder_testing_demo git https://github.com/thunder/thunder_testing_demo.git
