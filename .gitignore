@@ -16,3 +16,8 @@ composer.lock
 
 .editorconfig
 .gitattributes
+
+.claude/settings.local.json
+.claude/worktrees
+
+.ddev/.env
