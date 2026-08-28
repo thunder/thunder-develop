@@ -34,6 +34,10 @@
             "type": "git",
             "url": "git@github.com:thunder/thunder-distribution.git"
         },
+        "thunder_ai_prompt_management": {
+            "type": "git",
+            "url": "git@git.drupal.org:project/thunder_ai_prompt_management.git"
+        },
         "paragraphs_features": {
             "type": "git",
             "url": "git@github.com:thunder/paragraphs_features.git"
@@ -70,11 +74,11 @@
         "mglaman/composer-drupal-lenient": "^1.0",
         "drupal/core-recipe-unpack": "^11.3",
         "drupal/thunder_ai": "^1.0",
-        "drupal/ai": "dev-1.5.x",
+        "drupal/ai": "^1.5",
+        "drupal/entity_blueprint": "^1.0",
+        "drupal/field_widget_actions": "^1.4",
         "drupal/tool_belt": "^1.0",
-        "drupal/ai_agents": "^1.0",
-        "drupal/mcp_client": "^1.0@alpha",
-        "drupal/ai_context": "^1.0@beta"
+        "drupal/ai_agents": "^1.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10 || ^11",
@@ -84,6 +88,7 @@
     "replace": {
         "drupal/paragraphs_features": "*",
         "drupal/ai_chatbot_assistant_ui": "*",
+        "drupal/thunder_ai_prompt_management": "*",
         "drupal/ivw_integration": "*",
         "drupal/update_helper": "*",
         "thunder/thunder_testing_demo": "*",
@@ -159,6 +164,7 @@
             "thunder/thunder-distribution": "8.3.x",
             "drupal/paragraphs_features": "2.x",
             "drupal/ai_chatbot_assistant_ui": "1.0.x",
+            "drupal/thunder_ai_prompt_management": "1.0.x",
             "drupal/ivw_integration": "8.x-2.x",
             "drupal/update_helper": "4.0.x",
             "thunder/thunder_testing_demo": "4.x"
