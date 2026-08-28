@@ -15,6 +15,7 @@ web_environment:
     - thunderDumpFile=${DDEV_COMPOSER_ROOT}/${DDEV_DOCROOT}/test-database-dump.php
 nodejs_version: "18"
 corepack_enable: false
+webimage_extra_packages: [libimage-exiftool-perl]
 
 # Key features of DDEV's config.yaml:
 
