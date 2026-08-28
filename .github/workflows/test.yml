@@ -43,6 +43,8 @@ jobs:
           composer config repositories.ivw git https://git.drupalcode.org/project/ivw_integration.git
           composer config repositories.update_helper git https://git.drupalcode.org/project/update_helper.git
           composer config repositories.thunder_testing_demo git https://github.com/thunder/thunder_testing_demo.git
+          composer config repositories.thunder_ai_prompt_management git https://git.drupalcode.org/project/thunder_ai_prompt_management.git
+          composer config repositories.ai_chatbot_assistant_ui git https://git.drupalcode.org/project/ai_chatbot_assistant_ui.git
 
       - name: Install dependencies
         run: |

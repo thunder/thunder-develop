@@ -19,3 +19,5 @@ composer.lock
 
 .claude/settings.local.json
 .claude/worktrees
+
+.ddev/.env
