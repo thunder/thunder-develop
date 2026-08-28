@@ -161,7 +161,7 @@
             "merge-extra-deep": true
         },
         "local-develop-packages": {
-            "thunder/thunder-distribution": "8.3.x",
+            "thunder/thunder-distribution": "8.4.x",
             "drupal/paragraphs_features": "2.x",
             "drupal/ai_chatbot_assistant_ui": "1.0.x",
             "drupal/thunder_ai_prompt_management": "1.0.x",
