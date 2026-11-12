@@ -40,7 +40,7 @@
         },
         "paragraphs_features": {
             "type": "git",
-            "url": "git@github.com:thunder/paragraphs_features.git"
+            "url": "git@git.drupal.org:project/paragraphs_features.git"
         },
         "ai_chatbot_assistant_ui": {
             "type": "git",
